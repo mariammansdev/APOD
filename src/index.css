@@ -41,7 +41,8 @@
   width: 100%;
   height: 100%;
   flex: 1;
-  object-fit: cover
+  object-fit: cover;
+  cursor: pointer;
 }
 
 .videoContainer {
@@ -265,7 +266,7 @@ footer button:hover {
   padding: 10px 20px;
   font-size: 16px;
   border: 2px solid transparent;
-  border-radius: 5px;
+  border-radius: 50px;
   background-color: #926ccb;
   color: white;
   cursor: pointer;
@@ -273,10 +274,20 @@ footer button:hover {
   text-decoration: none;
   font-family: 'Press Start 2P', sans-serif;
   transition: background-color 0.3s, transform 0.3s;
-  -webkit-transition: background-color 0.3s, transform 0.3s;
-  -moz-transition: background-color 0.3s, transform 0.3s;
-  -ms-transition: background-color 0.3s, transform 0.3s;
-  -o-transition: background-color 0.3s, transform 0.3s;
+}
+
+.searchDates {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: 2px solid transparent;
+  border-radius: 50px;
+  /* background-color: #926ccb; */
+  color: rgb(6, 6, 6);
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  font-family: 'Press Start 2P', sans-serif;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
 .bodyC p {
@@ -288,6 +299,43 @@ footer button:hover {
 .bodyC button:hover {
   background-color: #5c3d8a;
   transform: scale(1.05);
+}
+
+.searchDates:hover {
+  background-color: #5c3d8a;
+  transform: scale(1.05);
+}
+.searchBar {
+  display: flex;
+  height: 70px;
+  background-color: #ffffff;
+  width: 700px;
+  padding: 5px;
+  /*align-items: center;
+  */border-radius: 50px;
+  justify-content: space-between;
+
+}
+
+.searchBar input {
+  width: 50%;
+  padding: 8px;
+  font-size: 16px;
+  border: 0px;
+  outline: none; 
+  border-radius: 50px;
+}
+.searchBar input:focus {
+  border: 0px;
+}
+
+.dateInput {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.datepicker-input-hidden {
+  display: none;
 }
 
 footer h2 {
