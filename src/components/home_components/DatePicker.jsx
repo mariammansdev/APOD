@@ -8,6 +8,7 @@ const IconButtonDatepicker = (props) => {
 
   const CustomInput = ({ value, onClick }) => (
     <button
+    className="searchBtn datepicker-input"
       type="button"
       onClick={onClick}
     >
@@ -21,16 +22,13 @@ const IconButtonDatepicker = (props) => {
   }
 
   return (
-    <div>
       <DatePicker
         id="datepicker"
         selected={date}
         onChange={(date) => onSearchQuery(date)}
         dateFormat="YYYY-MM-DD"
         customInput={<CustomInput />}
-        className="datepicker-input-hidden"
       />
-    </div>
   );
 };
 

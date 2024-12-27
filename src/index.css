@@ -71,6 +71,7 @@ footer div {
 
 footer h2 {
   font-size: 1.4rem;
+  font-family: 'Audiowide', cursive;
 }
 
 footer h1 {
@@ -136,6 +137,7 @@ footer button:hover {
 .sidebarContents h2 {
   font-weight: 200;
   font-size: 1.4rem;
+  font-family: 'Space Mono', cursive;
 }
 
 .sidebarContents div {
@@ -245,16 +247,15 @@ footer button:hover {
   width: 100vw;
   height: 100vh;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding: 10px;
+  justify-content: center;
   background: linear-gradient(to bottom, #21023c, #082154, #705c8c);
-  gap: 10px;
+  gap: 5rem;
 }
 
 .bodyContent {
-  width: 70vw;
+  width: 90vw;
   gap: 10px;
   display: flex;
   flex-direction: column;
@@ -262,7 +263,7 @@ footer button:hover {
   justify-content: center;
 }
 
-.bodyC button {
+.searchBtn {
   padding: 10px 20px;
   font-size: 16px;
   border: 2px solid transparent;
@@ -294,9 +295,10 @@ footer button:hover {
   font-family: 'Space Mono', sans-serif;
 }
 .bodyC h2 {
+  font-size: 20px;
   font-family: 'Audiowide', cursive;
 }
-.bodyC button:hover {
+.searchBtn:hover {
   background-color: #5c3d8a;
   transform: scale(1.05);
 }
@@ -305,45 +307,40 @@ footer button:hover {
   background-color: #5c3d8a;
   transform: scale(1.05);
 }
+
+.searchContainer {
+  display: flex;
+  flex-direction: column;
+  height: 10%;
+  background-color: #ffffff;
+  width: 80%;
+  border-radius: 50px;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
 .searchBar {
   display: flex;
-  height: 70px;
-  background-color: #ffffff;
-  width: 700px;
-  padding: 5px;
-  /*align-items: center;
-  */border-radius: 50px;
+  align-items: center;
   justify-content: space-between;
+  padding: 10px 10px 5px 10px;
+}
 
+.datepicker-input {
+  background-color: transparent;
+  color: #926ccb;
+  padding: 0px 10px 0px 10px;
+  font-size: 15px;
 }
 
 .searchBar input {
   width: 50%;
-  padding: 8px;
   font-size: 16px;
-  border: 0px;
+  border: none;
   outline: none; 
-  border-radius: 50px;
-}
-.searchBar input:focus {
-  border: 0px;
-}
-
-.dateInput {
-  display: flex;
   align-items: center;
-  justify-content: space-around;
-}
-.datepicker-input-hidden {
-  display: none;
-}
-
-footer h2 {
-  font-family: 'Audiowide', cursive;
-}
-
-.sidebar h2 {
-  font-family: 'Space Mono', cursive;
+  justify-content: center;
+  border-radius: 50px;
 }
 
 /* Style the iframe */
@@ -354,7 +351,7 @@ footer h2 {
   object-fit: fill
 }
 
-@media (min-width: 640px) {
+@media (min-width: 768px) {
   .sidebar {
     position: relative;
     inset: unset;
@@ -374,18 +371,17 @@ footer h2 {
     width: 100vw;
   }
 
-  
-}
-@media (min-width: 915px) {
-  .bodyC {
-    width: 100vw;
-    height: 100vh;
+  .searchContainer {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(to bottom, #21023c, #082154, #705c8c);
-    gap: 2rem;
+    flex-direction: row;
+    height: 70px;
+    background-color: #ffffff;
+    width: 70%;
+    padding: 5px;
+    /*align-items: center;
+    */border-radius: 50px;
+    justify-content: space-between;
+  
   }
   .bodyContent {
     display: flex;
@@ -395,10 +391,23 @@ footer h2 {
   }
 
   .bodyContent h2{
-    font-size: 50px;
-    line-height: 5rem
+    font-size: 35px;
+    line-height: 3rem
   }
   .bodyContent p{
     font-size: 15px
+  }
+  .searchContainer input {
+    width: 50%;
+    padding: 8px;
+    font-size: 16px;
+    border: none;
+    outline: none; 
+    border-radius: 50px;
+    text-align: center;
+  }
+
+  .searchBar {
+    justify-content: start;
   }
 }

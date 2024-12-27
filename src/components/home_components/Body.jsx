@@ -36,8 +36,8 @@ function Body() {
         {/* <p> APOD offers a daily visual feast of our universe, bringing the latest discoveries, breathtaking imagery, and educational content to the public, one picture at a time.</p> */}
       </div>
 
-      <div className='searchBar'>
-        <div className='dateInput'>
+      <div className='searchContainer'>
+        <div className='searchBar'>
           <input
             type="text"
             placeholder={`${useFormat()}`}
@@ -48,7 +48,9 @@ function Body() {
           {!isHiddenCalendar && <IconButtonDatepicker setSearchQuery={setSearchQuery} date={date} setDate={setDate} />}
         </div>
 
-        <button onClick={() => {
+        <button 
+        className='searchBtn'
+        onClick={() => {
           if (!isValidDate)
             return false;
           navigate('/apod', {
