@@ -37,7 +37,7 @@ function Body() {
       </div>
 
       <div className='searchContainer'>
-        <div className='searchBar'>
+        <div className='searchDate'>
           <input
             type="text"
             placeholder={`${useFormat()}`}

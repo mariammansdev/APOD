@@ -28,6 +28,7 @@ const IconButtonDatepicker = (props) => {
         onChange={(date) => onSearchQuery(date)}
         dateFormat="YYYY-MM-DD"
         customInput={<CustomInput />}
+        popperPlacement="top-start"
       />
   );
 };

@@ -300,7 +300,7 @@ footer button:hover {
   gap: 1.5rem;
 }
 
-.searchBar {
+.searchDate {
   display: flex;
   min-height: 85%;
   max-height: 85%;
@@ -316,7 +316,7 @@ footer button:hover {
   font-size: 15px;
 }
 
-.searchBar input {
+.searchDate input {
   width: 100%;
   font-size: 16px;
   border: none;
@@ -380,7 +380,7 @@ footer button:hover {
   }
 
 
-  .searchBar {
+  .searchDate {
     justify-content: start;
   }
 }
