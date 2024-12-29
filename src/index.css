@@ -303,6 +303,7 @@ footer button:hover {
 .searchBar {
   display: flex;
   min-height: 85%;
+  max-height: 85%;
   align-items: center;
   justify-content: space-between;
   padding: 10px 10px 5px 10px;
