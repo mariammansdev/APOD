@@ -1,5 +1,8 @@
 const Main = (props) => {
   const { data } = props
+  function handleImageClick () {
+    if (data.url) window.open(data.url);
+  }
   return (
     <div className = 'imgContainer'>
       {data['media_type'] === 'video' ?
@@ -17,7 +20,7 @@ const Main = (props) => {
           </div>
         )
         : (
-          <img src={data.hdurl} alt={data.title || 'bg-img'} className="bgImage" />
+          <img src={data.hdurl} alt={data.title || 'bg-img'} className="bgImage" onClick={handleImageClick}/>
         )
       }
     </div>
