@@ -6,7 +6,14 @@ import Body from './components/home_components/Body';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 function App() {
-  const queryClient = new QueryClient();
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        cacheTime: Infinity,
+        staleTime: Infinity
+      }
+    }
+  });
   return (
     <QueryClientProvider client ={queryClient}>
     <Routes>
