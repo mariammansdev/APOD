@@ -5,7 +5,7 @@ import Body from './Body'
 function Home() {
   return (
     <div className='home'>
-      <NavBar />
+      {/* <NavBar /> */}
       <Body />
     </div>
   )

@@ -1,10 +1,11 @@
 import React from 'react'
+import { IoPlanet } from "react-icons/io5";
 
 const LoadingState = () => {
   return (
     <div className='loadingState'>
-        <i className="fa-solid fa-gear"></i>
-     </div>
+      <IoPlanet className='loadingPlanet'/>
+    </div>
   )
 }
 
