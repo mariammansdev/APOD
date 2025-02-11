@@ -1,30 +1,30 @@
-const Main = (props) => {
-  const { data } = props
-  function handleImageClick () {
-    if (data.url) window.open(data.url);
-  }
-  return (
-    <div className = 'imgContainer'>
-      {data['media_type'] === 'video' ?
-        (
-          <div className="ratio ratio-16x9">
-            <iframe width="560" 
-              height="315" 
-              src={data.url} 
-              frameborder="0" 
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-              referrerPolicy="strict-origin-when-cross-origin" 
-              allowFullScreen= {true}
-              className='video-iframe'>
-            </iframe>
-          </div>
-        )
-        : (
-          <img src={data.hdurl} alt={data.title || 'bg-img'} className="bgImage" onClick={handleImageClick}/>
-        )
-      }
-    </div>
-  )
+import { useState } from "react";
+import { useLocation } from 'react-router-dom';
+import Main from './DisplayAPOD';
+import SideBar from './SideBar';
+import Footer from './Footer';
+import useAPOD from "./hooks/useAPOD";
+import LoadingState from "./LoadingState";
+
+function Main() {
+    const [showModal, setShowModal] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
+    const location = useLocation();
+    const { apodQuery, isLoading, isError, error } = useAPOD(location);
+    function handleToggleModal() {
+        setShowModal(!showModal);
+        setIsOpen(!isOpen)
+    }
+
+    if (isLoading) return (<LoadingState />)
+    if (isError) return (<h3>{error || 'Unknown Error'}</h3>)
+    return (
+        <>
+            <Main data={apodQuery} />
+            {showModal && <SideBar showModal={showModal} handleToggleModal={handleToggleModal} data={apodQuery} isOpen={isOpen} />}
+            <Footer showModal={showModal} handleToggleModal={handleToggleModal} data={apodQuery} />
+        </>
+    )
 }
 
 export default Main

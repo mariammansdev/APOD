@@ -24,17 +24,228 @@
   display: relative;
 }
 
+/**
+****************************** HOME ***********************************
+***/
 .home {
   height: 10vh;
   width: 100%;
   background-color:rgba(0, 0, 0, 0.1);
 }
 
+/**
+****************************** BODY ***********************************
+***/
+.bodyContainer {
+  width: 100vw;
+  height: 100vh;
+  gap: 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  background: linear-gradient(to bottom, #21023c, #082154, #705c8c);
+}
+
+.bodyContent {
+  width: 90vw;
+  margin-top: 8%;
+  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.apodTitle {
+  margin-top: 55px;
+  font-size: 20px;
+  font-family: 'Audiowide', cursive;
+}
+
+.colorChangeText {
+  font-family: 'Space Mono', sans-serif;
+  font-size: 10px;
+  animation: colorChange 5s infinite ease-in-out;
+  -webkit-animation: colorChange 5s infinite ease-in-out;
+}
+
+@media screen and (min-width: 768px) {
+  .bodyContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .apodTitle {
+    font-size: 60px;
+    font-family: 'Audiowide', cursive;
+    /* animation: colorChange 5s infinite; */
+  }
+
+  .colorChangeText {
+    font-family: 'Space Mono', sans-serif;
+    font-size: 20px;
+    animation: colorChange 5s infinite ease-in-out;
+    -webkit-animation: colorChange 5s infinite ease-in-out;
+  }
+
+  @keyframes colorChange {
+    0% {
+      color: rgb(246, 246, 246);
+    }
+    25% {
+      color: rgb(160, 140, 178);
+    }
+    50% {
+      color: rgb(169, 162, 194);
+    }
+    75% {
+      color: rgb(157, 178, 196);
+    }
+    
+    100% {
+      color: rgb(181, 155, 169);
+    }
+  }
+
+}
+
+/**
+****************************** SEARCH ***********************************
+***/
+.searchBtn {
+  min-width: 12%;
+  padding: 12px;
+  font-size: 16px;
+  border: 2px solid transparent;
+  border-radius: 50px;
+  background-color: #926ccb;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  font-family: 'Press Start 2P', sans-serif;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.searchBtn:hover {
+  background-color: #5c3d8a;
+  transform: scale(1.05);
+}
+
+.searchBtn i {
+  margin-right: 10px;
+}
+
+.searchContainer {
+  display: flex;
+  flex-direction: column;
+  height: 10%;
+  background-color: #ffffff;
+  width: 80%;
+  border-radius: 50px;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+
+.searchDate {
+  display: flex;
+  min-height: 85%;
+  max-height: 85%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 10px 5px 10px;
+}
+
+.datepicker-input {
+  background-color: transparent;
+  color: #926ccb;
+  padding: 0px 0px 0px 10px;
+  font-size: 15px;
+}
+
+.searchDate input {
+  width: 90%;
+  height: 100%;
+  font-size: 16px;
+  border: none;
+  outline: none; 
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  padding-left: 10%;
+  margin-right: 5px;
+}
+
+
+@media (min-width: 768px) {
+  .searchContainer {
+    display: flex;
+    flex-direction: row;
+    height: 70px;
+    background-color: #ffffff;
+    width: 70%;
+    border-radius: 50px;
+    justify-content: space-between;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+  .searchContainer:hover {
+    background-color: #d0c2d2;
+  }
+
+  .searchDate {
+    justify-content: start;
+  }
+}
+
+/**
+****************************** LOADING ***********************************
+***/
+.loadingState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  perspective: 1000px;
+}
+
+.loadingPlanet {
+  opacity: 0.4;
+  font-size: 8rem;
+  animation: spin 3s linear infinite;
+  transform-origin: center center;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+
+/**
+****************************** DISPLAY APOD ***********************************
+***/
 .imgContainer {
   display: flex;
   flex-direction: column;
   max-height: 100vh;
   width: 100%;
+}
+
+.video-iframe {
+  position: absolute;
+  width: 100%;
+  height: 80vh;
+  object-fit: fill
 }
 
 .bgImage {
@@ -44,65 +255,9 @@
   object-fit: cover;
   cursor: pointer;
 }
-
-.videoContainer {
-  /* display: flex;
-  flex-direction: column; */
-  height: 50vh;
-  width: 100%;
-  
-}
-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding: 1rem;
-}
-
-footer div {
-  display: flex;
-  flex-direction: column;
-}
-
-footer h2 {
-  font-size: 1.4rem;
-  font-family: 'Audiowide', cursive;
-}
-
-footer h1 {
-  font-size: 0.9rem;
-  font-weight: 200;
-}
-
-footer button {
-  background: transparent;
-  border: none;
-  outline: none;
-  color: white;
-  padding: 1rem;
-  transition-duration: 200ms;
-  cursor: pointer;
-}
-
-footer button i {
-  font-size: 1.3rem;
-}
-
-footer button:hover {
-  opacity: 0.7;
-}
-
-.bgGradient {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-  background: linear-gradient(to top, #030615, rgba(255, 255, 255, 0));
-}
+/**
+****************************** SIDEBAR ***********************************
+***/
 
 .sidebar {
   position: fixed;
@@ -159,6 +314,25 @@ footer button:hover {
   opacity: 0.7;
 }
 
+.sidebar {
+    position: relative;
+    inset: unset;
+    min-width: 30%;
+    max-height: 100vh;
+    box-shadow: 0 0 40px 1px #030615;
+  }
+
+.sidebarContents {
+  margin: unset;
+  width: 100%;
+}
+
+.bgOverlay {
+  right: 0;
+  left: unset;
+  width: 100vw;
+}
+
 .descriptionContainer {
   display: flex;
   flex-direction: column;
@@ -171,201 +345,7 @@ footer button:hover {
   opacity: 0.8;
 }
 
-.loadingState {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: 1;
-  perspective: 1000px;
-}
-
-.loadingPlanet {
-  opacity: 0.4;
-  font-size: 8rem;
-  animation: spin 3s linear infinite;
-  transform-origin: center center;
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.logincontainer {
-  align-items: center;
-}
-
-.navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 10%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #feffff;
-  padding: 1rem;
-  color: rgb(2, 1, 7);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 100;
-}
-
-.navbar .logo {
-  font-size: 0.5rem;
-}
-
-.navbar .nav-links {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
-}
-
-.navbar .nav-links li {
-  display: inline;
-}
-
-.navbar .nav-links a {
-  color: white;
-  text-decoration: none;
-  padding: 0.5rem;
-  transition: background-color 0.3s ease;
-}
-
-.navbar .nav-links a:hover {
-  background-color: #555;
-}
-
-.bodyContainer {
-  width: 100vw;
-  height: 100vh;
-  gap: 5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  background: linear-gradient(to bottom, #21023c, #082154, #705c8c);
-}
-/* .react-datepicker__month-container  */
-.bodyContent {
-  width: 90vw;
-  margin-top: 8%;
-  gap: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.searchBtn {
-  min-width: 12%;
-  padding: 12px;
-  font-size: 16px;
-  border: 2px solid transparent;
-  border-radius: 50px;
-  background-color: #926ccb;
-  color: white;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  font-family: 'Press Start 2P', sans-serif;
-  transition: background-color 0.3s, transform 0.3s;
-}
-
-.searchBtn:hover {
-  background-color: #5c3d8a;
-  transform: scale(1.05);
-}
-
-.searchBtn i {
-  margin-right: 10px;
-}
-
-.apodTitle {
-  margin-top: 55px;
-  font-size: 20px;
-  font-family: 'Audiowide', cursive;
-}
-
-.colorChangeText {
-  font-family: 'Space Mono', sans-serif;
-  font-size: 10px;
-  animation: colorChange 5s infinite ease-in-out;
-  -webkit-animation: colorChange 5s infinite ease-in-out;
-}
-
-@keyframes colorChange {
-  0% {
-    color: rgb(246, 246, 246);
-  }
-  25% {
-    color: rgb(160, 140, 178);
-  }
-  50% {
-    color: rgb(169, 162, 194);
-  }
-  75% {
-    color: rgb(157, 178, 196);
-  }
-  
-  100% {
-    color: rgb(181, 155, 169);
-  }
-}
-
-.searchContainer {
-  display: flex;
-  flex-direction: column;
-  height: 10%;
-  background-color: #ffffff;
-  width: 80%;
-  border-radius: 50px;
-  justify-content: space-between;
-  gap: 1.5rem;
-}
-
-
-.searchDate {
-  display: flex;
-  min-height: 85%;
-  max-height: 85%;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 10px 5px 10px;
-}
-
-.datepicker-input {
-  background-color: transparent;
-  color: #926ccb;
-  padding: 0px 0px 0px 10px;
-  font-size: 15px;
-}
-
-.searchDate input {
-  width: 90%;
-  height: 100%;
-  font-size: 16px;
-  border: none;
-  outline: none; 
-  align-items: center;
-  justify-content: center;
-  border-radius: 50px;
-  padding-left: 10%;
-  margin-right: 5px;
-}
-
-.video-iframe {
-  position: absolute;
-  width: 100%;
-  height: 80vh;
-  object-fit: fill
-}
-
-@media (min-width: 768px) {
+@media screen and (min-width: 768px){
   .sidebar {
     position: relative;
     inset: unset;
@@ -384,43 +364,60 @@ footer button:hover {
     left: unset;
     width: 100vw;
   }
-
-  .searchContainer {
-    display: flex;
-    flex-direction: row;
-    height: 70px;
-    background-color: #ffffff;
-    width: 70%;
-    border-radius: 50px;
-    justify-content: space-between;
-    transition: background-color 0.3s, transform 0.3s;
 }
 
-  .searchContainer:hover {
-    background-color: #d0c2d2;
-  }
+/**
+****************************** FOOTER ***********************************
+***/
 
-  .bodyContent {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+}
 
-  .apodTitle {
-    font-size: 60px;
-    font-family: 'Audiowide', cursive;
-    /* animation: colorChange 5s infinite; */
-  }
+footer div {
+  display: flex;
+  flex-direction: column;
+}
 
-  .colorChangeText {
-    font-family: 'Space Mono', sans-serif;
-    font-size: 20px;
-    animation: colorChange 5s infinite ease-in-out;
-    -webkit-animation: colorChange 5s infinite ease-in-out;
-  }
+footer h2 {
+  font-size: 1.4rem;
+  font-family: 'Audiowide', cursive;
+}
 
-  .searchDate {
-    justify-content: start;
-  }
+footer h1 {
+  font-size: 0.9rem;
+  font-weight: 200;
+}
+
+footer button {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 1rem;
+  transition-duration: 200ms;
+  cursor: pointer;
+}
+
+footer button i {
+  font-size: 1.3rem;
+}
+
+footer button:hover {
+  opacity: 0.7;
+}
+
+.bgGradient {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(to top, #030615, rgba(255, 255, 255, 0));
 }
