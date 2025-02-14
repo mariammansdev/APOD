@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useLocation } from 'react-router-dom';
-import Main from './DisplayAPOD';
+import DisplayAPOD from './DisplayAPOD';
 import SideBar from './SideBar';
 import Footer from './Footer';
 import useAPOD from "./hooks/useAPOD";
@@ -20,7 +20,7 @@ function Main() {
     if (isError) return (<h3>{error || 'Unknown Error'}</h3>)
     return (
         <>
-            <Main data={apodQuery} />
+            <DisplayAPOD data={apodQuery} />
             {showModal && <SideBar showModal={showModal} handleToggleModal={handleToggleModal} data={apodQuery} isOpen={isOpen} />}
             <Footer showModal={showModal} handleToggleModal={handleToggleModal} data={apodQuery} />
         </>

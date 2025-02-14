@@ -1,4 +1,4 @@
-import APOD from './components/apod_components/APOD';
+import Main from './components/apod_components/Main';
 import { Routes, Route } from 'react-router-dom';
 import Home from './components/home_components/Home';
 import "react-datepicker/dist/react-datepicker.css";
@@ -18,7 +18,7 @@ function App() {
     <QueryClientProvider client ={queryClient}>
     <Routes>
       <Route path='/' element = {<Body />} />
-      <Route path='/apod' element = {<APOD />} />
+      <Route path='/apod' element = {<Main />} />
     </Routes>
     </QueryClientProvider>
   );
