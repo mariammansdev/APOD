@@ -50,7 +50,7 @@
 
 .bodyContent {
   width: 80vw;
-  margin-top: 3.5rem;
+  margin-top: 2.5rem;
   padding: 1rem;
   display: flex;
   flex: '0 0 50rem';
@@ -59,6 +59,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  animation: upDown 5s infinite cubic-bezier(0.17, 0.67, 0.88, 1.01);
 }
 
 .bodyContent h2 {
@@ -69,7 +70,6 @@
   font-family: "Audiowide", cursive;
   background-clip: text;
   background-image: url("./assets/star.png");
-  animation: colorChange 5s infinite cubic-bezier(0.17, 0.67, 0.88, 1.01);
   object-fit: cover;
 }
 
@@ -80,55 +80,51 @@
   text-align: center;
 }
 
-@keyframes colorChange {
+@keyframes upDown {
   0% {
-    color: rgba(177, 172, 199, 0.644);
-  }
-  25% {
-    color: rgba(138, 127, 188, 0.644);
+    transform: translateY(0);
   }
   50% {
-    color: rgba(76, 54, 174, 0.644);
-  }
-  75% {
-    color: rgba(83, 21, 114, 0.559);
+    transform: translateY(20px);
   }
   100% {
-    color: rgba(177, 172, 199, 0.644);
+    transform: translateY(0);
   }
 }
 
-@media screen and (min-width: 770px) {
+@media screen and (min-width: 550px) {
   .bodyContent {
     background: none;
+    animation: none;
   }
   
   .bodyContent h2 {
     font-size: 1.9rem;
     padding-left: 4.7rem;
+    animation: colorChange 5s infinite cubic-bezier(0.17, 0.67, 0.88, 1.01);
   }
 
   .bodyContent p {
     max-width: 85ch;
     font-size: 0.9rem;
   }
+}
 
-  @keyframes colorChange {
-    0% {
-      color: rgb(17, 16, 16);
-    }
-    25% {
-      color: rgb(77, 75, 78);
-    }
-    50% {
-      color: rgb(169, 162, 194);
-    }
-    75% {
-      color: rgb(157, 178, 196);
-    }
-    100% {
-      color: rgb(181, 155, 169);
-    }
+@keyframes colorChange {
+  0% {
+    color: rgb(17, 16, 16);
+  }
+  25% {
+    color: rgb(77, 75, 78);
+  }
+  50% {
+    color: rgb(169, 162, 194);
+  }
+  75% {
+    color: rgb(157, 178, 196);
+  }
+  100% {
+    color: rgb(181, 155, 169);
   }
 }
 
@@ -164,7 +160,7 @@
   flex-direction: column;
   height: 3.1rem;
   background-color: #ffffff;
-  width: 80%;
+  width: 70%;
   border-radius: 50px;
   justify-content: space-between;
   gap: 2rem;
@@ -175,7 +171,7 @@
   flex: '0 0 40px';
   align-items: center;
   justify-content: space-between;
-  padding: 10px 10px 5px 10px;
+  padding: .8rem 10px 5px 10px;
 }
 
 .datepicker-input {
@@ -188,7 +184,7 @@
 .searchDate input {
   width: 90%;
   height: 100%;
-  font-size: 16px;
+  font-size: .8rem;
   border: none;
   outline: none;
   align-items: center;
@@ -198,13 +194,13 @@
   margin-right: 5px;
 }
 
-@media (min-width: 770px) {
+@media (min-width: 550px) {
   .searchContainer {
     display: flex;
     flex-direction: row;
-    height: 70px;
     background-color: #ffffff;
-    width: 70%;
+    width: 80%;
+    max-width: 800px;
     border-radius: 50px;
     justify-content: space-between;
     transition: background-color 0.3s, transform 0.3s;
