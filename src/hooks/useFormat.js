@@ -1,4 +1,4 @@
-const useFormat = (date) => {
+const UseFormat = (date) => {
   if (!date) {
       date = new Date();
   }
@@ -10,4 +10,4 @@ const useFormat = (date) => {
      
 }
 
-export default useFormat
+export default UseFormat

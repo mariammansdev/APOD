@@ -1,8 +1,7 @@
-import Main from './components/apod_components/Main';
+import Main from './pages/Main';
 import { Routes, Route } from 'react-router-dom';
-import Home from './components/home_components/Home';
+import Home from './pages/Home';
 import "react-datepicker/dist/react-datepicker.css";
-import Body from './components/home_components/Body';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 function App() {
@@ -17,7 +16,7 @@ function App() {
   return (
     <QueryClientProvider client ={queryClient}>
     <Routes>
-      <Route path='/' element = {<Body />} />
+      <Route path='/' element = {<Home />} />
       <Route path='/apod' element = {<Main />} />
     </Routes>
     </QueryClientProvider>

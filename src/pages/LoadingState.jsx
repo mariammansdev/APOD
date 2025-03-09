@@ -1,4 +1,3 @@
-import React from 'react'
 import { IoPlanet } from "react-icons/io5";
 
 const LoadingState = () => {

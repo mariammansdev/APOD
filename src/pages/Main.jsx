@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useLocation } from 'react-router-dom';
-import DisplayAPOD from './DisplayAPOD';
-import SideBar from './SideBar';
-import Footer from './Footer';
-import useAPOD from "./hooks/useAPOD";
+import DisplayAPOD from '../components/apod_components/DisplayAPOD';
+import SideBar from '../components/apod_components/SideBar';
+import Footer from '../components/apod_components/Footer';
+import useAPOD from "../hooks/useAPOD";
 import LoadingState from "./LoadingState";
 
 function Main() {

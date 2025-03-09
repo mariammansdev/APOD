@@ -1,7 +1,7 @@
 import IconButtonDatepicker from "./DatePicker";
-import useFormat from '../apod_components/hooks/useFormat';
+import UseFormat from '../../hooks/useFormat';
 import { useNavigate } from "react-router-dom";
-import React, { useRef, useState } from 'react'
+import { useRef, useState } from 'react'
 
 function SearchContainer() {
     const navigate = useNavigate();
@@ -17,7 +17,7 @@ function SearchContainer() {
         if (!isValidDate)
             return false;
         navigate('/apod', {
-            state: { date: useFormat(date) }
+            state: { date: UseFormat(date) }
         });
     }
     function onSearchQuery(e) {
@@ -42,7 +42,7 @@ function SearchContainer() {
                 <input
                     ref={inputRef} autoFocus={inputRef.current === document.activeElement}
                     type="text"
-                    placeholder={`${useFormat()}`}
+                    placeholder={`${UseFormat()}`}
                     value={searchQuery}
                     onChange={onSearchQuery}
                 />
@@ -52,7 +52,7 @@ function SearchContainer() {
             <button
                 className='searchBtn'
                 onClick={onClickSearch}> 
-                <i class="fa-solid fa-rocket"></i>
+                <i className="fa-solid fa-rocket"></i>
                 Go!
             </button>
         </div>

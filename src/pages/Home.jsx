@@ -1,6 +1,4 @@
-import React from 'react'
-import NavBar from './NavBar'
-import Body from './Body'
+import Body from '../components/home_components/Body'
 
 function Home() {
   return (
