@@ -1,4 +1,4 @@
-import IconButtonDatepicker from "./DatePicker";
+// import IconButtonDatepicker from "./DatePicker";
 import UseFormat from '../../hooks/useFormat';
 import { useNavigate } from "react-router-dom";
 import { useRef, useState } from 'react'
@@ -46,7 +46,7 @@ function SearchContainer() {
                     value={searchQuery}
                     onChange={onSearchQuery}
                 />
-                {!isHiddenCalendar && <IconButtonDatepicker setSearchQuery={setSearchQuery} date={date} setDate={setDate} />}
+                {/* {!isHiddenCalendar && <IconButtonDatepicker setSearchQuery={setSearchQuery} date={date} setDate={setDate} />} */}
             </div>
 
             <button

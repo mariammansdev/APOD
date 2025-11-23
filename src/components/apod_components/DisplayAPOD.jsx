@@ -1,5 +1,7 @@
 const DisplayAPOD = (props) => {
   const { data } = props
+  const [loaded, setLoaded] = React.useState(false);
+
   function handleImageClick () {
     if (data.url) window.open(data.url);
   }
@@ -20,7 +22,11 @@ const DisplayAPOD = (props) => {
           </div>
         )
         : (
-          <img src={data.hdurl} alt={data.title || 'bg-img'} className="bgImage" onClick={handleImageClick}/>
+          <div>
+             {!loaded && <div>Loading...</div>}
+              <img src={data.hdurl} alt={data.title || 'bg-img'} className="bgImage" onClick={handleImageClick}  onLoad={() => setLoaded(true)}/>
+             </div>
+         
         )
       }
     </div>
