@@ -6,7 +6,7 @@ const NASA_KEY = import.meta.env.VITE_NASA_API_KEY;
 export const apodurl = 'https://api.nasa.gov/planetary/apod' + `?api_key=${NASA_KEY}&concept_tags=${true}`;
 
 export const customFetch = axios.create({
-    baseURL: url,
+    baseURL: apodurl,
 });
 
 export const formatPrice = (price) => {

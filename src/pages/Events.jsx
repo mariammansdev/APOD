@@ -33,7 +33,7 @@ export const loader = (queryClient) => async ({ request }) => {
 const Events = () => {
   return (
     <>
-      <Filters />
+      {/* <Filters /> */}
       <EventsContainer />
       <PaginationContainer />
     </>

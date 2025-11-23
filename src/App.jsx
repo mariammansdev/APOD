@@ -1,4 +1,4 @@
-import Main from './pages/Main';
+import Main from './components/apod_components/Main';
 
 import Home from './pages/Home';
 // import "react-datepicker/dist/react-datepicker.css";

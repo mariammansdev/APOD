@@ -5,9 +5,7 @@ const links = [
   { id: 1, url: '/', text: 'home' },
   { id: 2, url: 'about', text: 'about' },
   { id: 3, url: 'Events', text: 'events' },
-  { id: 4, url: 'fav', text: 'cart' },
-  // { id: 5, url: 'checkout', text: 'checkout' },
-  // { id: 6, url: 'orders', text: 'orders' },
+  { id: 4, url: 'fav', text: 'cart' }
 ];
 
 const NavLinks = () => {
@@ -16,7 +14,6 @@ const NavLinks = () => {
     <>
       {links.map((link) => {
         const { id, url, text } = link;
-        if ((url === 'checkout' || url === 'orders') /*&& !user*/) return null;
         return (
           <li key={id}>
             <NavLink className='capitalize' to={url}>

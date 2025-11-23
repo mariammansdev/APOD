@@ -19,7 +19,7 @@ const  EventsGrid = () => {
   
         return (
           <Link
-            key={event.id}
+            key={event.date}
             to={`/events/${event.date}`}
             className='card w-full shadow-xl hover:shadow-2xl transition duration-300'
           >
