@@ -5,18 +5,18 @@ import NavLinks from './NavLinks';
 import { useEffect, useState } from 'react';
 
 const themes = {
-  cmyk: 'cmyk',
-  dracula: 'dracula'
+  fantasy: 'fantasy',
+  dark: 'dark'
 };
 
 const getThemeFromLocalStorage = ()=> {
-  return localStorage.getItem('theme') || themes.cmyk;
+  return localStorage.getItem('theme') || themes.fantasy;
 }
 const Navbar = () => {
   const [theme,setTheme] = useState(getThemeFromLocalStorage());
   const handleTheme = ()=> {
-    const {cmyk, dracula} = themes;
-    const newTheme  = theme == cmyk ? dracula : cmyk;
+    const {fantasy, dark} = themes;
+    const newTheme  = theme == fantasy ? dark : fantasy;
    
     setTheme(newTheme)
   }
