@@ -22,6 +22,7 @@ const  EventsGrid = () => {
             key={event.date}
             to={`/events/${event.date}`}
             className='card w-full shadow-xl hover:shadow-2xl transition duration-300'
+            data-aos="fade-up"
           >
             <figure className='px-4 pt-4'>
               <img

@@ -7,11 +7,11 @@ import { useEffect } from 'react';
 const FeaturedEvents = () => {
   
     useEffect(() => {
-      AOS.init({ duration: 1000, once: true });
+      AOS.init({ duration: 1000});
     }, []);
   
   return (
-    <div className='pt-24'  data-aos="fade-up">
+    <div className='pt-24' data-aos="fade-up">
       <SectionTitle text='featured Events' />
       <EventsGrid />
     </div>
