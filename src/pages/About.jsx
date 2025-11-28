@@ -15,9 +15,15 @@ const About = () => {
           </div>
         </div>
       </div>
-      <p className='mt-6 text-lg leading-8 max-w-2xl mx-auto'>
-        From the point of view of someone likes universe but too technial backround but enjoy it and want to be updated!
-      </p>
+      <p className="text-lg text-base-content leading-relaxed mt-9">
+        Welcome to your <span class="font-semibold text-secondary">daily cosmic scroll</span>—where space feels less like a science textbook and more like pure wonder.  
+        We bring you <span class="font-semibold">NASA’s Astronomy Picture of the Day (APOD)</span> in a way that’s easy, fun, and totally approachable.  
+        <br /><br />
+        No jargon. No rocket science. Just <span class="text-accent">mind-blowing images of galaxies, planets, and nebulae</span>, paired with short, clear explanations anyone can enjoy.  
+        <br /><br />
+        Because loving the universe shouldn’t require a degree—it should just feel awesome.  
+        <strong class="block mt-4 text-secondary">One picture. One story. Every day. Ready to explore?</strong>
+        </p>
     </>
   );
 };
