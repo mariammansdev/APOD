@@ -10,23 +10,26 @@ const  EventsGrid = () => {
     AOS.init({ duration: 1000, once: true });
   }, []);
 
-  const { events } = useLoaderData();
-
+  let { events } = useLoaderData();
+  if (!Array.isArray(events)) {
+        events = [events];
+    }
   return (
     <div className='pt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3'>
       {events.map((event) => {
-        const { title, date, image, copyright } = event;
+        debugger
+        const { title, date, hdurl, copyright } = event;
   
         return (
           <Link
-            key={event.date}
-            to={`/events/${event.date}`}
+            key={date}
+            to={`/events/${date}`}
             className='card w-full shadow-xl hover:shadow-2xl transition duration-300'
             data-aos="fade-up"
           >
             <figure className='px-4 pt-4'>
               <img
-                src={event.hdurl} alt={event.title || 'bg-img'}
+                src={hdurl} alt={title || 'bg-img'}
                 className='rounded-xl h-64 md:h-48 w-full object-cover'
               />
             </figure>
