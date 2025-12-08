@@ -13,13 +13,23 @@ const  EventsGrid = () => {
   let { events } = useLoaderData();
   if (!Array.isArray(events)) {
         events = [events];
-    }
+  }
+  function getYouTubeId(url) {
+    const regExp = /(?:youtube\.com.*v=|youtu\.be\/)([^&]+)/;
+    const match = url.match(regExp);
+    return match ? match[1] : null;
+  }
+
+
+
   return (
     <div className='pt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3'>
       {events.map((event) => {
         debugger
-        const { title, date, hdurl, copyright } = event;
-  
+        const { title, date, hdurl, copyright, url } = event;
+        const videoId = getYouTubeId(url);
+        const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+
         return (
           <Link
             key={date}
@@ -29,14 +39,14 @@ const  EventsGrid = () => {
           >
             <figure className='px-4 pt-4'>
               <img
-                src={hdurl} alt={title || 'bg-img'}
+                src={hdurl || thumbnailUrl} alt={title || 'bg-img'}
                 className='rounded-xl h-64 md:h-48 w-full object-cover'
               />
             </figure>
             <div className='card-body items-center text-center'>
               <h2 className='card-title capitalize tracking-wider'>{title}</h2>
               <span className='text-secondary'>{date}</span>
-              {copyright && <span className='text-secondary'>{copyright}</span>}
+              {copyright && <span className='text-secondary'> © {copyright}</span>}
             </div>
           </Link>
         );

@@ -1,6 +1,4 @@
-import Main from './components/apod_components/Main';
 
-import Home from './pages/Home';
 // import "react-datepicker/dist/react-datepicker.css";
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Children, useState } from 'react'

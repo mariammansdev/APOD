@@ -24,7 +24,6 @@ const fetchEvents = (queryParams) => {
 
 
 export const loader = (queryClient) => async ({ request }) => {
-  debugger
   const params = Object.fromEntries([...new URL(request.url).searchParams.entries()]);
   const res = await queryClient.ensureQueryData(fetchEvents(params));
   const events = res.data;

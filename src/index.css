@@ -8,3 +8,42 @@
     @apply mx-auto max-w-6xl px-8;
   }
 }
+
+@layer utilities {
+  @keyframes pop-shake {
+    0% { transform: scale(1) translateX(0) rotate(0deg); }
+    8% {
+      transform: scale(1.35) translateX(-6px) rotate(-10deg);
+      box-shadow: 0 18px 34px rgba(0,0,0,0.35), 0 0 28px rgba(59,130,246,0.45);
+    }
+    22% {
+      transform: scale(1.18) translateX(6px) rotate(10deg);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.36), 0 0 32px rgba(59,130,246,0.5);
+    }
+    40% {
+      transform: scale(1.32) translateX(-4px) rotate(-6deg);
+      box-shadow: 0 22px 44px rgba(0,0,0,0.4), 0 0 36px rgba(59,130,246,0.6);
+    }
+    60% {
+      transform: scale(0.92) translateX(3px) rotate(4deg);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.22), 0 0 12px rgba(59,130,246,0.25);
+    }
+    80% {
+      transform: scale(1.05) translateX(-1px) rotate(-2deg);
+      box-shadow: 0 10px 22px rgba(0,0,0,0.26), 0 0 16px rgba(59,130,246,0.32);
+    }
+    100% { transform: scale(1) translateX(0) rotate(0deg); box-shadow: none; }
+  }
+
+  .animate-popshake {
+    /* stronger single run: grow larger then shrink, with shake */
+    animation-name: pop-shake;
+    animation-duration: 1000ms;
+    animation-timing-function: cubic-bezier(.2,.8,.2,1);
+    animation-fill-mode: both;
+    animation-iteration-count: 1;
+    animation-delay: 120ms;
+    transform-origin: center;
+    will-change: transform, box-shadow;
+  }
+}

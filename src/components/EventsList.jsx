@@ -26,9 +26,9 @@ const EventsList = () => {
                         />
                         <div className='ml-0 sm:ml-16'>
                             <h3 className='capitalize font-medium text-lg'>{title}</h3>
-                            <h4 className='capitalize text-md text-neutral-content'>
-                                {copyright}
-                            </h4>
+                            {copyright && <h4 className='capitalize text-md text-neutral-content'>
+                                 © {copyright}
+                            </h4>}
                         </div>
                         {/* <p className='font-medium ml-0 sm:ml-auto text-lg'>
                             {copyright}
