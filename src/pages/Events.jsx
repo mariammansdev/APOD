@@ -1,5 +1,8 @@
 import { Filters, EventsContainer, PaginationContainer } from "../components";
 import { customFetch } from "../utils"
+import { useNavigation } from "react-router-dom";
+import LoadingState from "./LoadingState";
+
 const url = '/events';
 
 const fetchEvents = (queryParams) => {
@@ -31,6 +34,13 @@ export const loader = (queryClient) => async ({ request }) => {
   return { events, meta, params };
 }
 const Events = () => {
+ const navigation = useNavigation();
+  if (navigation.state == 'loading') {
+    return <div className='w-full h-[100vh]'>
+        <LoadingState />
+      </div>
+  }
+
   return (
     <>
       <Filters />

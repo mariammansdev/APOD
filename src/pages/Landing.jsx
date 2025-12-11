@@ -1,5 +1,7 @@
 import { FeaturedEvents, Hero } from "../components"
 import { customFetch, apodurl } from "../utils";
+import { useNavigation } from "react-router-dom";
+import LoadingState from "./LoadingState";
 
 const url = `${apodurl}&count=9`
 
@@ -17,6 +19,14 @@ export const loader = (queryClient) => async () => {
   return { events };
 } 
 const Landing = () => {
+
+  const navigation = useNavigation();
+    if (navigation.state == 'loading') {
+      return <div className='w-full h-[100vh]'>
+          <LoadingState />
+        </div>
+    }
+  
   return (
     <>
       <Hero />

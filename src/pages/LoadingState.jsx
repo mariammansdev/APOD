@@ -1,9 +1,9 @@
-import { IoPlanet } from "react-icons/io5";
+import { RotatingHero } from "../components"
 
 const LoadingState = () => {
   return (
-    <div className='loadingState'>
-      <IoPlanet className='loadingPlanet'/>
+    <div className='w-full h-[100vh] '>
+      <RotatingHero />
     </div>
   )
 }

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-
+import RotatingHero from './RotatingHero'
 import hero1 from '../assets/hero1.webp'
 import hero2 from '../assets/hero2.webp'
 import hero3 from '../assets/hero3.webp'
@@ -16,7 +16,12 @@ const Hero = () => {
                 <Link to='/events' className='btn btn-primary'>Our Events</Link>
             </div>
         </div>
-        <div className='hidden h-[28rem] lg:carousel carousel-center p-4 space-x-4 bg-neutral rounded-box'>
+        
+        <div className="max-w-4xl mx-auto">
+            <RotatingHero />
+        </div>
+
+        {/* <div className='hidden h-[28rem] lg:carousel carousel-center p-4 space-x-4 bg-neutral rounded-box'>
             {
                 carouselImages.map((image)=> { 
                     return <div key = {image} className='carousel-item'> 
@@ -25,7 +30,7 @@ const Hero = () => {
                     </div>
                 })
             }
-        </div>
+        </div> */}
     </div>
   )
 }

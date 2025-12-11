@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-// import { useLocation } from 'react-router-dom';
 import DisplayAPOD from './DisplayAPOD';
 import SideBar from './SideBar';
 
@@ -7,7 +6,6 @@ import SideBar from './SideBar';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-import LoadingState from "../../pages/LoadingState";
 
 function Main({event}) {
       useEffect(() => {
@@ -15,12 +13,12 @@ function Main({event}) {
       }, []);
     
     const [showModal, setShowModal] = useState(false);
-       const [isOpen, setIsOpen] = useState(false);
-     
-       function handleToggleModal() {
-           setShowModal(!showModal);
-           setIsOpen(!isOpen)
-       }
+    const [isOpen, setIsOpen] = useState(false);
+
+    function handleToggleModal() {
+        setShowModal(!showModal);
+        setIsOpen(!isOpen)
+    }
    
     
     // if (isLoading) return (<LoadingState />)
