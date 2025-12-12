@@ -1,5 +1,5 @@
 
-const Login = ({label, name, type, defaultValue}) => {
+const FormInput = ({label, name, type, defaultValue}) => {
   return (
     <div className="form-control">
       <fieldset className="fieldset">
@@ -12,4 +12,4 @@ const Login = ({label, name, type, defaultValue}) => {
   )
 }
 
-export default Login
+export default FormInput

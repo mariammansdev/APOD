@@ -1,7 +1,15 @@
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigation } from "react-router-dom";
+import { RotatingHero } from "../components";
+import LoadingState from "./LoadingState";
+
 
 const About = () => {
+   const navigation = useNavigation();
+    if (navigation.state == 'loading') {
+      return <div className='w-full h-[100vh]'>
+          <LoadingState />
+        </div>
+    }
   return (
     <>
       <div className='flex flex-wrap gap-2 sm:gap-x-6 items-center justify-center'>
@@ -18,11 +26,11 @@ const About = () => {
       </div>
       <p className="text-lg text-base-content leading-relaxed mt-9">
         Welcome to your <span class="font-semibold text-secondary">daily cosmic scroll</span>—where space feels less like a science textbook and more like pure wonder.
-        We bring you <span class="font-semibold">NASA’s Astronomy Picture of the Day (APOD)</span> in a way that’s easy, fun, and totally approachable.
+        We bring you <span class="font-semibold">NASA's Astronomy Picture of the Day (APOD)</span> in a way that's easy, fun, and totally approachable.
         <br /><br />
         No jargon. No rocket science. Just <span class="text-accent">mind-blowing images of galaxies, planets, and nebulae</span>, paired with short, clear explanations anyone can enjoy.
         <br /><br />
-        Because loving the universe shouldn’t require a degree—it should just feel awesome.
+        Because loving the universe shouldn't require a degree—it should just feel awesome.
         <div className="flex">
           <strong class="block mt-4 text-secondary">One picture. One story. Every day. Ready to explore?</strong>
           <div className='mt-10'>

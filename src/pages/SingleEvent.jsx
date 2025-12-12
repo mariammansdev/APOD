@@ -1,8 +1,9 @@
 
-import { useState } from 'react';
 import { customFetch } from '../utils';
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 import { Main } from '../components';
+import { useNavigation } from "react-router-dom";
+import LoadingState from "./LoadingState";
 
 const singleEventQuery = (date) => {
   return {
@@ -20,11 +21,28 @@ export const loader = (queryClient) => async ({ params }) => {
   return { event };
 }
 const SingleEvent = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
   const { event } = useLoaderData();
-     
 
-  //  if (isLoading) return (<LoadingState />)
-  //   if (isError) return (<h3>{error || 'Unknown Error'}</h3>)
+  const cameFromList = Boolean(location.state?.fromList);
+
+  const handleBack = () => {
+    if (cameFromList && window.history.length > 1) {
+      navigate(-1);
+    } else {
+      const fallback = location.state?.listUrl ?? "/events";
+      navigate(fallback, { replace: false });
+    }
+  };
+
+
+  const navigation = useNavigation();
+  if (navigation.state == 'loading') {
+    return <div className='w-full h-[100vh]'>
+      <LoadingState />
+    </div>
+  }
   return (
     <section>
       {/* <div className='text-md breadcrumbs'>
@@ -37,10 +55,21 @@ const SingleEvent = () => {
           </li>
         </ul>
       </div> */}
-     < Main event = {event}/>
-    
+      <div className='text-md breadcrumbs'>
+        <button
+          onClick={handleBack}
+          className="btn btn-ghost"
+          aria-label="Back to Products"
+        >
+          ← Back to Events
+        </button>
+      </div>
+
+
+      < Main event={event} />
+
     </section>
-    
+
   );
 }
 

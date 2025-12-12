@@ -17,6 +17,11 @@ const EventsList = () => {
                     <Link
                         key={date}
                         to={`/events/${date}`}
+                        state={{
+                            fromList: true,
+                            listUrl: `/events${location.search}`,
+                        }}
+
                         className='p-8 flex flex-col sm:flex-row rounded-lg shadow-xl hover:shadow-2xl duration-300 group'
                         data-aos="fade-up"
                     >

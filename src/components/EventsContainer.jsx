@@ -5,9 +5,11 @@ import { useState } from 'react';
 import { BsFillGridFill, BsList } from 'react-icons/bs';
 
 const EventsContainer = () => {
-  debugger
-  const { meta } = useLoaderData();
-  // const totalEvents = meta.pagination.total;
+  let { events } = useLoaderData();
+  if (!Array.isArray(events)) {
+    events = [events];
+  }
+  const totalEvents = events?.length;
 
   const [layout, setLayout] = useState('grid');
 
@@ -23,7 +25,7 @@ const EventsContainer = () => {
       {/* HEADER */}
       <div className='flex justify-between items-center mt-8 border-b border-base-300 pb-5'>
         <h4 className='font-medium text-md'>
-          {/* {totalEvents} event{totalEvents > 1 && 's'} */}
+          {totalEvents} event{totalEvents > 1 && 's'}
         </h4>
         <div className='flex gap-x-2'>
           <button
