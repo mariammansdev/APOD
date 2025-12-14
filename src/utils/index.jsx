@@ -3,7 +3,7 @@ import axios from "axios";
 const url = 'https://strapi-store-server.onrender.com/api';
 
 const NASA_KEY = import.meta.env.VITE_NASA_API_KEY;
-export const apodurl = 'https://api.nasa.gov/planetary/apod' + `?api_key=${NASA_KEY}&concept_tags=${true}`;
+export const apodurl = 'https://api.nasa.gov/planetary/apod' + `?api_key=${NASA_KEY}&thumbs=true&concept_tags=${true}`;
 
 export const customFetch = axios.create({
     baseURL: apodurl,

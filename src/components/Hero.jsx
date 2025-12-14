@@ -11,7 +11,7 @@ const Hero = () => {
     <div className='grid lg:grid-cols-2 gap-24 items-center'>
         <div>
             <h1  className='max-w-2xl text-4xl font-bold tracking-tight sm:text-6xl'>Explore Your Universe!</h1>
-            <p className='mt-8 max-w-xl text-lg leading-8'>APOD offers a daily visual feast of our universe, bringing the latest discoveries, breathtaking imagery, and educational content to the public, one picture at a time.</p>
+            <p className='mt-8 max-w-xl text-lg leading-8'>APOD offers a daily visual feast of our universe, bringing the latest discoveries, breathtaking imagery, and educational content to the public.</p>
             <div className='mt-10'>
                 <Link to='/events' className='btn btn-primary'>Our Events</Link>
             </div>

@@ -38,7 +38,7 @@ const DisplayAPOD = (props) => {
             </div>
           ) : (
             <div className="w-full h-full relative overflow-hidden">
-              <img src={event.hdurl} alt={event.title || 'bg-img'} className="h-full w-full object-cover cursor-pointer transform transition duration-300 hover:scale-105" onClick={handleImageClick} />
+              <img src={event.url} alt={event.title || 'bg-img'} className="h-full w-full object-cover cursor-pointer transform transition duration-300 hover:scale-105" onClick={handleImageClick} />
             </div>
           )}
         </div>

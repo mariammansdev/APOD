@@ -3,7 +3,7 @@ import { customFetch, apodurl } from "../utils";
 import { useNavigation } from "react-router-dom";
 import LoadingState from "./LoadingState";
 
-const url = `${apodurl}&count=9`
+const url = `${apodurl}&count=6`
 
 const featuredEventsQuery = {
   queryKey: ['featured-events'],
