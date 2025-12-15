@@ -15,8 +15,8 @@ const EventsContainer = () => {
 
   const setActiveStyles = (pattern) => {
     return `text-xl btn btn-circle btn-sm ${pattern === layout
-        ? 'btn-primary text-primary-content'
-        : 'btn-ghost text-based-content'
+      ? 'btn-primary text-primary-content'
+      : 'btn-ghost text-based-content'
       }`;
   };
 
@@ -44,19 +44,19 @@ const EventsContainer = () => {
           </button>
         </div>
       </div>
-      {/* PRODUCTS */}
+      {/* EVENTS */}
       <div>
         {
-        // totalEvents === 0 ? (
-        //   <h5 className='text-2xl mt-16'>
-        //     Sorry, no events matched your search...
-        //   </h5>
-        // ) :
-         layout === 'grid' ? (
-          <EventsGrid />
-        ) : (
-          <EventsList />
-        )}
+          totalEvents === 0 ? (
+            <h5 className='text-2xl mt-16'>
+              Sorry, no events matched your search...
+            </h5>
+          ) :
+            layout === 'grid' ? (
+              <EventsGrid />
+            ) : (
+              <EventsList />
+            )}
       </div>
     </>
   );

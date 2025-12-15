@@ -39,7 +39,7 @@ const SingleEvent = () => {
 
   const navigation = useNavigation();
   if (navigation.state == 'loading') {
-    return <div className='w-full h-[100vh]'>
+    return <div className='w-full h-[90vh]'>
       <LoadingState />
     </div>
   }

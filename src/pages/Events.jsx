@@ -1,4 +1,4 @@
-import { Filters, EventsContainer, PaginationContainer } from "../components";
+import { Filters, EventsContainer } from "../components";
 import { customFetch } from "../utils"
 import { useNavigation } from "react-router-dom";
 import LoadingState from "./LoadingState";
@@ -6,19 +6,12 @@ import LoadingState from "./LoadingState";
 const url = '/events';
 
 const fetchEvents = (queryParams) => {
-  const { search, category, date, sort, price, shipping, page } =
+  const { date } =
     queryParams;
   return {
     queryKey: [
       'events',
-      date ?? new Date(),
-      // search ?? '',
-      // category ?? 'all',
-      // company ?? 'all',
-      // sort ?? 'a-z',
-      // price ?? 100000,
-      // shipping ?? false,
-      // page ?? 1,
+      date ?? new Date()
     ],
     queryFn: () => customFetch(url, { params: queryParams })
   }
@@ -36,17 +29,16 @@ export const loader = (queryClient) => async ({ request }) => {
 const Events = () => {
  const navigation = useNavigation();
   if (navigation.state == 'loading') {
-    return <div className='w-full h-[100vh]'>
+    return <div className='w-full h-[90vh]'>
         <LoadingState />
       </div>
   }
 
   return (
-    <>
+    <div className="md:h-[calc(100vh-3rem)] lg:h-[calc(100vh-10.5rem)]">
       <Filters />
       <EventsContainer />
-      {/* <PaginationContainer /> */}
-    </>
+    </div>
   )
 }
 

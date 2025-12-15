@@ -17,7 +17,7 @@ const Hero = () => {
             </div>
         </div>
         
-        <div className="max-w-4xl mx-auto">
+        <div className="hidden lg:max-w-4xl lg:h-[28rem] lg:mx-auto">
             <RotatingHero />
         </div>
 

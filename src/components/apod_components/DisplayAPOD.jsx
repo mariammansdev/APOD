@@ -3,26 +3,20 @@ import Footer from './Footer';
 
 const DisplayAPOD = (props) => {
   const { handleToggleModal, showModal, event } = props
-  
-  // Guard against undefined event
-  if (!event) {
-    return <div className='flex items-center justify-center h-screen'>Loading...</div>;
-  }
-  
-  // const [loaded, setLoaded] = React.useState(false);
-  function handleImageClick () {
+
+  function handleImageClick() {
     if (event.url) window.open(event.url);
   }
   const [animateBtn, setAnimateBtn] = useState(true);
   useEffect(() => {
-    // remove animation class after the animation finishes (duration + delay)
+
     const t = setTimeout(() => setAnimateBtn(false), 1200);
     return () => clearTimeout(t);
   }, []);
 
-    return (
+  return (
 
-      <div className='mx-auto flex flex-col w-full h-[calc(100vh-120px)]' >
+    <div className='mx-auto flex flex-col w-full h-[calc(100vh-14.5rem)]' >
       <div className="flex-1 flex">
         <div className="flex-1 w-full">
           {event['media_type'] === 'video' ? (
@@ -55,9 +49,9 @@ const DisplayAPOD = (props) => {
       </div>
       {/* footer below media */}
       {/* <Footer showModal={showModal} handleToggleModal={handleToggleModal} data={event} /> */}
-      </div>
+    </div>
 
-   
+
   )
 }
 
