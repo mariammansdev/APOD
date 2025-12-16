@@ -17,10 +17,11 @@ const Hero = () => {
             </div>
         </div>
         
-        <div className="hidden lg:max-w-4xl lg:h-[28rem] lg:mx-auto">
+        <div className="hidden md:block">
             <RotatingHero />
         </div>
 
+{/* for favorite section */}
         {/* <div className='hidden h-[28rem] lg:carousel carousel-center p-4 space-x-4 bg-neutral rounded-box'>
             {
                 carouselImages.map((image)=> { 

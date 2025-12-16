@@ -1,4 +1,4 @@
-import { BsCart3, BsMoonFill, BsSunFill } from 'react-icons/bs';
+import { BsHeartFill, BsMoonFill, BsSunFill } from 'react-icons/bs';
 import { FaBarsStaggered } from 'react-icons/fa6';
 import { NavLink } from 'react-router-dom';
 import NavLinks from './NavLinks';
@@ -33,7 +33,7 @@ const Navbar = () => {
         {/* Navbar Start */}
         <div className="navbar-start">
           <NavLink to="/" className="hidden lg:flex btn btn-primary text-3xl items-center">
-            C
+            A
           </NavLink>
           <div className="dropdown lg:hidden">
             <label tabIndex={0} className="btn btn-ghost">
@@ -69,7 +69,7 @@ const Navbar = () => {
 
           <NavLink to="/cart" className="btn btn-ghost btn-circle btn-md">
             <div className="indicator">
-              <BsCart3 className="h-6 w-6" />
+              <BsHeartFill className="h-6 w-6" />
               <span className="badge badge-sm badge-primary indicator-item">88</span>
             </div>
           </NavLink>
