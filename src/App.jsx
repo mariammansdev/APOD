@@ -4,7 +4,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import {
   About,
-  // Cart,
+  Fav,
   Error,
   HomeLayout,
   Landing,
@@ -51,10 +51,10 @@ function App() {
           element: <SingleEvent />,
           loader: singleEventLoader(queryClient),
         },
-      // {
-      //   path: 'fav',
-      //   element: <Cart />,
-      // },
+        {
+          path: 'fav',
+          element: <Fav />,
+        },
       {
         path: 'about',
         element: <About />,

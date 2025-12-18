@@ -1,5 +1,5 @@
 export {default as About } from './About'
-export {default as Cart } from './Cart'
+export {default as Fav } from './Fav'
 export {default as LoadingState} from './LoadingState'
 export {default as Error } from './Error'
 export {default as HomeLayout } from './HomeLayout'

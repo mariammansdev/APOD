@@ -67,7 +67,7 @@ const Navbar = () => {
             )}
           </button>
 
-          <NavLink to="/cart" className="btn btn-ghost btn-circle btn-md">
+          <NavLink to="/fav" className="btn btn-ghost btn-circle btn-md">
             <div className="indicator">
               <BsHeartFill className="h-6 w-6" />
               <span className="badge badge-sm badge-primary indicator-item">88</span>
