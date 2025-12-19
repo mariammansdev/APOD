@@ -19,9 +19,7 @@ function Main({event}) {
         setShowModal(!showModal);
         setIsOpen(!isOpen)
     }
-    
-    // if (isLoading) return (<LoadingState />)
-    // if (isError) return (<h3>{error || 'Unknown Error'}</h3>)
+ 
     return (
         <section className="w-full h-[full] overflow-hidden"  /*data-aos="fade-down"*/>
             <DisplayAPOD event={event} showModal={showModal} handleToggleModal={handleToggleModal}/>

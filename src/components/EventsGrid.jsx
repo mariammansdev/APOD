@@ -25,7 +25,7 @@ const EventsGrid = () => {
 
 
   return (
-    <div className='pt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3'>
+    <div className='pt-12 mb-14 grid gap-4 md:grid-cols-2 lg:grid-cols-3'>
       {events.map((event) => {
         const { title, date, hdurl, thumbnail_url, url, copyright } = event;
         const videoId = thumbnail_url ? '' : getYouTubeId(url);

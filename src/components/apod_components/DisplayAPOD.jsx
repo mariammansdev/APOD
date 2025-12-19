@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Footer from './Footer';
+import { BsHeartFill } from 'react-icons/bs';
 
 const DisplayAPOD = (props) => {
   const { handleToggleModal, showModal, event } = props
@@ -32,7 +32,7 @@ const DisplayAPOD = (props) => {
             </div>
           ) : (
             <div className="w-full h-full relative overflow-hidden">
-              <img src={event.url} alt={event.title || 'bg-img'} className="h-full w-full object-contain cursor-pointer transform transition duration-300 hover:scale-105" onClick={handleImageClick} />
+              <img src={event.url} alt={event.title || 'bg-img'} className="h-full w-full object-fill cursor-pointer transform transition duration-300 hover:scale-105" onClick={handleImageClick} />
             </div>
           )}
         </div>
@@ -43,7 +43,11 @@ const DisplayAPOD = (props) => {
             onClick={handleToggleModal}
             aria-label="More info"
             className={`btn btn-ghost p-3 rounded-full w-14 h-14 text-2xl shadow-lg ${animateBtn ? 'animate-popshake' : ''}`}>
-            <i className="fa-solid fa-circle-info text-2xl"></i>
+            <div className='grid gap-6'>
+              <i className="fa-solid fa-circle-info text-2xl"></i>
+              <BsHeartFill className="h-6 w-6" />
+            </div>
+            
           </button>
         </div>
       </div>

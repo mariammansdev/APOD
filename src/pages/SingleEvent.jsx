@@ -59,12 +59,11 @@ const SingleEvent = () => {
         <button
           onClick={handleBack}
           className="btn btn-ghost"
-          aria-label="Back to Products"
+          aria-label="Back to Events"
         >
           ← Back to Events
         </button>
       </div>
-
 
       < Main event={event} />
 

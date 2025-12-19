@@ -17,7 +17,6 @@ const fetchEvents = (queryParams) => {
   }
 }
 
-
 export const loader = (queryClient) => async ({ request }) => {
   const params = Object.fromEntries([...new URL(request.url).searchParams.entries()]);
   const res = await queryClient.ensureQueryData(fetchEvents(params));
@@ -34,7 +33,7 @@ const Events = () => {
   }
 
   return (
-    <div className="md:h-[calc(100vh-3rem)] lg:h-[calc(100vh-10.5rem)]">
+    <div className="mb-14">
       <Filters />
       <EventsContainer />
     </div>
