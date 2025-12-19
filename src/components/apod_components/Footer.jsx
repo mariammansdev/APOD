@@ -1,5 +1,5 @@
 const Footer = (props) => {
-    const { handleToggleModal, data } = props;
+    const { data } = props;
     return (
         <footer className="relative w-full flex items-center justify-between gap-4 p-4 text-white bg-gradient-to-t from-[#030615] to-transparent">
             <div>

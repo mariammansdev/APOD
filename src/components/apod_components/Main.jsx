@@ -15,15 +15,15 @@ function Main({event}) {
     const [showModal, setShowModal] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
 
-    function handleToggleModal() {
+    function handleInfoModal() {
         setShowModal(!showModal);
         setIsOpen(!isOpen)
     }
  
     return (
         <section className="w-full h-[full] overflow-hidden"  /*data-aos="fade-down"*/>
-            <DisplayAPOD event={event} showModal={showModal} handleToggleModal={handleToggleModal}/>
-            {showModal && <SideBar showModal={showModal} handleToggleModal={handleToggleModal} data={event} isOpen={isOpen} />}
+            <DisplayAPOD event={event} showModal={showModal} handleInfoModal={handleInfoModal}/>
+            {showModal && <SideBar showModal={showModal} handleInfoModal={handleInfoModal} data={event} isOpen={isOpen} />}
         </section>
     )
 }

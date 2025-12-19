@@ -1,12 +1,12 @@
 export default function SideBar(props) {
-    const { handleToggleModal, data, isOpen } = props
+    const { handleInfoModal, data } = props
 
     return (
 
         <div className="fixed left-0 right-0 bottom-0 top-[70px] flex flex-col z-10">
             {/* Overlay */}
             <div
-                onClick={handleToggleModal}
+                onClick={handleInfoModal}
                 className="absolute inset-0 bg-black/60"
             ></div>
 
@@ -19,7 +19,7 @@ export default function SideBar(props) {
                     <p className="text-[1.1rem] font-light opacity-70">{data?.date}</p>
                     <p>{data?.explanation}</p>
                 </div>
-                <button onClick={handleToggleModal}>
+                <button onClick={handleInfoModal}>
                     <i className="fa-solid fa-arrow-right"></i>
                 </button>
             </div>

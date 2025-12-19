@@ -1,15 +1,18 @@
 import { useEffect, useState } from 'react';
-import { BsHeartFill } from 'react-icons/bs';
+import { BsHeartFill, BsInfoCircleFill } from 'react-icons/bs';
 
 const DisplayAPOD = (props) => {
-  const { handleToggleModal, showModal, event } = props
+  const { handleInfoModal, event } = props
 
-  function handleImageClick() {
+  const handleImageClick = () => {
     if (event.url) window.open(event.url);
   }
-  const [animateBtn, setAnimateBtn] = useState(true);
-  useEffect(() => {
+  const handleAddToFav = () => {
 
+  }
+  const [animateBtn, setAnimateBtn] = useState(true);
+
+  useEffect(() => {
     const t = setTimeout(() => setAnimateBtn(false), 1200);
     return () => clearTimeout(t);
   }, []);
@@ -38,21 +41,22 @@ const DisplayAPOD = (props) => {
         </div>
 
         {/* Side column for the info button - sits next to the media */}
-        <div className="w-24 flex items-start justify-center p-4">
+        <div className="w-24 flex flex-col p-4">
           <button
-            onClick={handleToggleModal}
+            onClick={handleInfoModal}
             aria-label="More info"
             className={`btn btn-ghost p-3 rounded-full w-14 h-14 text-2xl shadow-lg ${animateBtn ? 'animate-popshake' : ''}`}>
-            <div className='grid gap-6'>
-              <i className="fa-solid fa-circle-info text-2xl"></i>
-              <BsHeartFill className="h-6 w-6" />
-            </div>
-            
+            <BsInfoCircleFill className='h-10 w-10' />
+            {/* <i className="fa-solid fa-circle-info text-2xl"></i>       */}
+          </button>
+          <button
+            onClick={handleAddToFav}
+            className={`btn btn-ghost p-3 rounded-full w-14 h-14 text-2xl shadow-lg ${animateBtn ? 'animate-popshake' : ''}`}
+          >
+            <BsHeartFill className="h-10 w-10" />
           </button>
         </div>
       </div>
-      {/* footer below media */}
-      {/* <Footer showModal={showModal} handleToggleModal={handleToggleModal} data={event} /> */}
     </div>
 
 
