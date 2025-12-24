@@ -17,13 +17,18 @@ export const formatPrice = (price) => {
   return dollarsAmount;
 };
 
-export const generateAmountOptions = (number) => {
-  return Array.from({ length: number }, (_, index) => {
-    const amount = index + 1;
-    return (
-      <option key={amount} value={amount}>
-        {amount}
-      </option>
-    );
-  });
-};
+  const EVENT_KEY_REGEX = /^event\(.+\)$/;
+
+  export const getAllEvents = () => {
+    const results = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key && EVENT_KEY_REGEX.test(key)) {
+        try {
+          const eventData = JSON.parse(localStorage.getItem(key));
+          results.push(eventData);
+        } catch { }
+      }
+    }
+    return results;
+  }

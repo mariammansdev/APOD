@@ -1,3 +1,5 @@
+import { BsArrowRight } from "react-icons/bs"
+
 export default function SideBar(props) {
     const { handleInfoModal, data } = props
 
@@ -20,7 +22,8 @@ export default function SideBar(props) {
                     <p>{data?.explanation}</p>
                 </div>
                 <button onClick={handleInfoModal}>
-                    <i className="fa-solid fa-arrow-right"></i>
+                    {/* <i className="fa-solid fa-arrow-right"></i> */}
+                    <BsArrowRight />
                 </button>
             </div>
         </div>

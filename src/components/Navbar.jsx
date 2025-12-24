@@ -3,6 +3,7 @@ import { FaBarsStaggered } from 'react-icons/fa6';
 import { NavLink } from 'react-router-dom';
 import NavLinks from './NavLinks';
 import { useEffect, useState } from 'react';
+import { getAllEvents } from '../utils';
 
 const themes = {
   fantasy: 'fantasy',
@@ -70,7 +71,7 @@ const Navbar = () => {
           <NavLink to="/fav" className="btn btn-ghost btn-circle btn-md">
             <div className="indicator">
               <BsHeartFill className="h-6 w-6" />
-              <span className="badge badge-sm badge-primary indicator-item">88</span>
+              <span className="badge badge-sm badge-primary indicator-item">{getAllEvents()?.length || 0}</span>
             </div>
           </NavLink>
         </div>

@@ -8,7 +8,7 @@ const DisplayAPOD = (props) => {
     if (event.url) window.open(event.url);
   }
   const handleAddToFav = () => {
-
+    localStorage.setItem(`event(${event.date})`, JSON.stringify(event));
   }
   const [animateBtn, setAnimateBtn] = useState(true);
 
