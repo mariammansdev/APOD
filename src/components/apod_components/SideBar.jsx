@@ -12,7 +12,7 @@ export default function SideBar(props) {
 
             {/* Modal */}
             <div className="relative z-20 flex flex-col items-start gap-4 p-4 overflow-y-scroll h-full w-[80%] sm:w-[40%] max-w-[800px] ml-auto bg-base-100 text-base-content">
-                <h2 className="font-light text-[1.4rem] font-['Space_Mono']">
+                <h2 className=" font-space font-normal text-[1.4rem] leading-tight">
                     {data?.title}
                 </h2>
                 <div className="flex flex-col gap-2">

@@ -1,0 +1,55 @@
+
+/* src/styles/fonts.css */
+
+/* Space Mono 400 + 700 (self-hosted) */
+@font-face {
+  font-family: "Space Mono";
+  src: url("/fonts/space-mono-v17-latin-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Space Mono";
+  src: url("/fonts/space-mono-v17-latin-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* CLS‑free fallback — tuned for v17; define per weight to match requests */
+@font-face {
+  font-family: "Space Mono Fallback";
+  src: local("Courier New"), local("Courier");
+  font-weight: 300;
+  font-style: normal;
+  size-adjust: 105%;
+  ascent-override: 82%;
+  descent-override: 18%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Space Mono Fallback";
+  src: local("Courier New"), local("Courier");
+  font-weight: 400;
+  font-style: normal;
+  size-adjust: 105%;
+  ascent-override: 82%;
+  descent-override: 18%;
+  line-gap-override: 0%;
+}
+@font-face {
+  font-family: "Space Mono Fallback";
+  src: local("Courier New"), local("Courier");
+  font-weight: 700;
+  font-style: normal;
+  size-adjust: 105%;
+  ascent-override: 82%;
+  descent-override: 18%;
+  line-gap-override: 0%;
+}
+
+
+h2, .font-space {
+  font-synthesis: none; /* avoids synthetic bold/italic */
+}
