@@ -1,21 +1,36 @@
 import { useEffect, useState } from 'react';
 import { BsHeartFill, BsInfoCircleFill } from 'react-icons/bs';
+import { getAllEvents } from '../../utils';
 
 const DisplayAPOD = (props) => {
-  const { handleInfoModal, event, isFavPage, favEvents } = props
+  const favEvents = getAllEvents();
+  const { handleInfoModal, event, isFavPage } = props;
+  const isFavEvent = favEvents.some((ev)=> !isFavPage && ev.date === event.date);
+  const [isFav, setIsFav] = useState(isFavEvent);
 
   const handleImageClick = (eventFav) => {
     if (eventFav && eventFav.url)  window.open(eventFav.url);
     if (event && event.url) window.open(event.url);
   }
   const handleAddToFav = () => {
+
     //if doesnt exist
+    
+    if (isFavEvent) {
+      localStorage.removeItem(`event(${event.date})`);
+      setIsFav(false);
+    }
+    //{ 
+   
+    //}
+    else {
+      localStorage.setItem(`event(${event.date})`, JSON.stringify(event));
 
-    localStorage.setItem(`event(${event.date})`, JSON.stringify(event));
-    //show toast
-
-    //else
-      //show message from daisy ui that it already exists
+      //show toast
+      setIsFav(true);
+    }
+   
+     
   }
   const [animateBtn, setAnimateBtn] = useState(true);
 
@@ -29,7 +44,6 @@ const DisplayAPOD = (props) => {
     <div className='mx-auto flex  w-full h-[calc(100vh-14.5rem)]' >
       <div className={"carousel w-full rounded-box "}>
         {isFavPage ? (
-         
            <div className='carousel w-full rounded-box'>{
               favEvents.map((event, idx) => {
                 const nextIdx = idx === favEvents.length - 1 ? 0 : idx + 1;
@@ -106,7 +120,7 @@ const DisplayAPOD = (props) => {
             onClick={handleAddToFav}
             className={`btn btn-ghost p-3 rounded-full w-14 h-14 text-2xl shadow-lg ${animateBtn ? 'animate-popshake' : ''}`}
           >
-            <BsHeartFill className="h-10 w-10" />
+            <BsHeartFill className="h-10 w-10" color={isFav ? '#EA4335' : ''}/>
           </button>}
         </div>
       </div>

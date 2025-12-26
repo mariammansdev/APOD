@@ -1,6 +1,5 @@
 import { useNavigation } from "react-router-dom";
 import LoadingState from "./LoadingState";
-import { getAllEvents } from "../utils";
 import { DisplayAPOD } from "../components";
 
 const Fav = () => {
@@ -11,7 +10,6 @@ const Fav = () => {
     </div>
   }
 
-  const events = getAllEvents();
   return (
     // <div className='carousel w-full rounded-box'>{
     //   events.map((event, idx) => {
@@ -26,7 +24,7 @@ const Fav = () => {
     //     </div>
     //   })
     // }</div>
-    <DisplayAPOD isFavPage = {true} favEvents = {events} />
+    <DisplayAPOD isFavPage = {true}/>
   )
 }
 
