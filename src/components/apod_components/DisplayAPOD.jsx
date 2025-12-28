@@ -68,10 +68,10 @@ const DisplayAPOD = (props) => {
                 <div id={`slide${idx}`} key={event.date} className='carousel-item relative w-full'>
 
                   <img src={event.url} className='w-full h-[80vh] cursor-pointer object-fill' onClick={()=>handleImageClick(event)} />
-                  <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+                  {favEvents.length > 1 && <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
                     <a href={`#slide${prevIdx}`} className="btn btn-circle cursor-pointer">❮</a>
                     <a href={`#slide${nextIdx}`} className="btn btn-circle cursor-pointer">❯</a>
-                  </div>
+                  </div>}
                 </div>
                 )
               })
@@ -109,18 +109,18 @@ const DisplayAPOD = (props) => {
 }
         {/* Side column for the info button - sits next to the media */}
         <div className="w-24 flex flex-col p-4">
-          <button
+          { isFavPage && favEvents.length > 0 || !isFavPage && <button
             onClick={handleInfoModal}
             aria-label="More info"
             className={`btn btn-ghost p-3 rounded-full w-14 h-14 text-2xl shadow-lg ${animateBtn ? 'animate-popshake' : ''}`}>
             <BsInfoCircleFill className='h-10 w-10' />
             {/* <i className="fa-solid fa-circle-info text-2xl"></i>       */}
-          </button>
+          </button>}
           {!isFavPage && <button
             onClick={handleAddToFav}
             className={`btn btn-ghost p-3 rounded-full w-14 h-14 text-2xl shadow-lg ${animateBtn ? 'animate-popshake' : ''}`}
           >
-            <BsHeartFill className="h-10 w-10" color={isFav ? '#EA4335' : ''}/>
+            <BsHeartFill className="h-10 w-10" color={isFav ? '#EA4335' : 'white'}/>
           </button>}
         </div>
       </div>
