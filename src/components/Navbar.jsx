@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom';
 import NavLinks from './NavLinks';
 import { useEffect, useState } from 'react';
 import { getAllEvents } from '../utils';
+import { useFavorites } from '../context/FavoritesContext';
 
 const themes = {
   fantasy: 'fantasy',
@@ -16,7 +17,7 @@ const getThemeFromLocalStorage = () => {
 
 const Navbar = () => {
   const [theme, setTheme] = useState(getThemeFromLocalStorage());
-
+  const {count} = useFavorites()
   const handleTheme = () => {
     const { fantasy, dark } = themes;
     const newTheme = theme === fantasy ? dark : fantasy;
@@ -71,7 +72,7 @@ const Navbar = () => {
           <NavLink to="/fav" className="btn btn-ghost btn-circle btn-md">
             <div className="indicator">
               <BsHeartFill className="h-6 w-6" />
-              <span className="badge badge-sm badge-primary indicator-item">{getAllEvents()?.length || 0}</span>
+              <span className="badge badge-sm badge-primary indicator-item">{count}</span>
             </div>
           </NavLink>
         </div>

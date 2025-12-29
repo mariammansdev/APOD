@@ -2,6 +2,7 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { FavoritesProvider } from './context/FavoritesContext';
 import {
   About,
   Fav,
@@ -72,10 +73,12 @@ function App() {
   //   </QueryClientProvider>
   // );
   return (
+    <FavoritesProvider>
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
       <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
+      </FavoritesProvider>
   );
 }
 

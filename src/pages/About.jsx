@@ -1,6 +1,6 @@
 import { Link, useNavigation } from "react-router-dom";
-import { RotatingHero } from "../components";
 import LoadingState from "./LoadingState";
+import { BsRocketTakeoff } from "react-icons/bs";
 
 
 const About = () => {
@@ -32,9 +32,9 @@ const About = () => {
         <br /><br />
         Because loving the universe shouldn't require a degree—it should just feel awesome.
         <div className="flex">
-          <strong class="block mt-4 text-secondary">One picture. One story. Every day. Ready to explore?</strong>
-          <div className='mt-10'>
-            <Link to='/events' className='btn btn-primary'>Our Events</Link>
+          <strong class="block mt-6 text-secondary">One picture. One story. Every day. Ready to explore?</strong>
+          <div className='mt-6 mx-4 cursor-pointer'>
+            <Link to='/events' ><BsRocketTakeoff size={40}/></Link>
           </div>
         </div>
       </p>
