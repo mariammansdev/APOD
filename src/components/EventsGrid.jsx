@@ -4,6 +4,7 @@ import { BsHeartFill } from 'react-icons/bs';
 import { useFavorites } from '../context/FavoritesContext';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import PerformedImage from './PerformedImage';
 
 const EventsGrid = () => {
   useEffect(() => {
@@ -40,6 +41,11 @@ const EventsGrid = () => {
           <Link
             key={date}
             to={`/events/${date}`}
+            state={{
+              fromList: true,
+              listUrl: `/events${location.search}`,
+            }}
+
             className='card w-full mb-6 shadow-xl hover:shadow-2xl transition duration-300 indicator'
             data-aos="fade-up"
           >
@@ -54,10 +60,19 @@ const EventsGrid = () => {
                     toggleFavorite(apodEvent);
                   }} />
               </button>
-              <img
-                src={hdurl || thumbnail_url || thumbnailUrl} alt={title || 'bg-img'}
+              
+            <PerformedImage
+              src={hdurl || thumbnail_url || thumbnailUrl}
+              alt={title}
+              // lqip={lqip}
+              eager={false}             // set true for above-the-fold items
+              // rounded="rounded-t-xl"
+            />
+
+              {/* <img
+                src= loading="lazy" decoding="async" alt={title || 'bg-img'}
                 className='rounded-xl h-64 md:h-48 w-full object-cover'
-              />
+              /> */}
             </figure>
             <div className='card-body items-center text-center'>
               <h2 className='card-title capitalize tracking-wider'>{title}</h2>

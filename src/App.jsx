@@ -24,8 +24,8 @@ function App() {
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
-        cacheTime: Infinity,
-        staleTime: Infinity
+        cacheTime: 10*60*1000,
+        staleTime: 10*60*1000
       }
     }
   });

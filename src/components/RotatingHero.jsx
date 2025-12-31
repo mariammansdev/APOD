@@ -12,7 +12,7 @@ import React from "react";
  * - size: overall SVG size in pixels (default 720)
  * - dark: set true to use a darker background (pairs nicely with DaisyUI dark themes)
  */
-export default function RotatingHero({ size = 720, dark = true }) {
+export default function RotatingHero({ size = 720, dark = true, hideSun = false }) {
   const cx = size / 2;
   const cy = size / 2;
 
@@ -89,7 +89,7 @@ export default function RotatingHero({ size = 720, dark = true }) {
         </g>
 
         {/* Sun */}
-        <g>
+        <g className={`${hideSun ? "hidden" : ""}`}>
           <circle cx={cx} cy={cy} r={36} fill="url(#sunGlow)" />
           <circle cx={cx} cy={cy} r={28} fill="#fde047" />
         </g>

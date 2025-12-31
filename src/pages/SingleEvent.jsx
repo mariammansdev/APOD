@@ -28,6 +28,7 @@ const SingleEvent = () => {
   const cameFromList = Boolean(location.state?.fromList);
 
   const handleBack = () => {
+    debugger
     if (cameFromList && window.history.length > 1) {
       navigate(-1);
     } else {

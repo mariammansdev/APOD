@@ -17,6 +17,7 @@
     "axios": "^1.4.0",
     "bootstrap": "^5.3.3",
     "cally": "^0.8.0",
+    "clsx": "^2.1.1",
     "dayjs": "^1.11.9",
     "jwt-decode": "^4.0.0",
     "pikaday": "^1.8.2",

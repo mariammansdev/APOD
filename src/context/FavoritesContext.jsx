@@ -31,6 +31,15 @@ function writeLS(array) {
 export function FavoritesProvider({ children }) {
   // Each item is a full record: { date, title, ... }
   const [favorites, setFavorites] = useState(() => readLS());
+    const [showModal, setShowModal] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
+
+    const handleInfoModal = useCallback( () =>{
+        debugger
+        setShowModal(!showModal);
+        setIsOpen(!isOpen)
+    },[])
+ 
 
   // Persist on change
   useEffect(() => {
@@ -87,8 +96,11 @@ export function FavoritesProvider({ children }) {
       // upsertFavorite,
       removeFavorite,
       toggleFavorite,
+      handleInfoModal,
+      isOpen,
+      showModal
     }),
-    [favorites, isFavorite, /*upsertFavorite,*/ removeFavorite, toggleFavorite]
+    [favorites, isFavorite, /*upsertFavorite,*/ removeFavorite, toggleFavorite, handleInfoModal, isOpen, showModal]
   );
 
   return (

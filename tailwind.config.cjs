@@ -5,6 +5,7 @@ export default {
     extend: {
       fontFamily: {
         space: ["Space Mono", "Space Mono Fallback", "monospace"],
+        exo2: ["'Exo 2'", "system-ui", "sans-serif"],
       }
     }
   },

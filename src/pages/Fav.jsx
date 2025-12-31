@@ -1,9 +1,42 @@
-import { useNavigation } from "react-router-dom";
+import { useNavigation, useLocation, useNavigate } from "react-router-dom";
 import LoadingState from "./LoadingState";
 import { DisplayAPOD } from "../components";
-
+import {useFavorites} from '../context/FavoritesContext'
+import { useRef, useEffect } from "react";
 const Fav = () => {
   const navigation = useNavigation();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const {showModal, handleInfoModal} = useFavorites();
+  const handleBack = () => {
+      const fallback = location.state?.listUrl ?? "/events";
+      navigate(fallback, { replace: false });
+  };
+
+const containerRef = useRef(null);
+
+  useEffect(() => {
+    const root = containerRef.current;
+    if (!root) return;
+
+    const onClick = (e) => {
+      const a = e.target.closest('a[href^="#"]');
+      if (!a || !root.contains(a)) return;
+
+      e.preventDefault();
+      const targetId = a.getAttribute("href").slice(1);
+      const targetEl = root.querySelector(`#${CSS.escape(targetId)}`);
+      targetEl?.scrollIntoView({ behavior: "smooth", inline: "start", block: "nearest" });
+
+      // Remove hash from URL to keep history clean
+      history.replaceState(null, "", location.pathname + location.search);
+    };
+
+    root.addEventListener("click", onClick);
+    return () => root.removeEventListener("click", onClick);
+  }, []);
+
+
   if (navigation.state == 'loading') {
     return <div className='w-full h-[90vh]'>
       <LoadingState />
@@ -24,7 +57,21 @@ const Fav = () => {
     //     </div>
     //   })
     // }</div>
-    <DisplayAPOD isFavPage = {true}/>
+    <>
+
+    <div className='text-md breadcrumbs'>
+        <button
+          onClick={handleBack}
+          className="btn btn-ghost"
+          aria-label="Back to Events"
+        >
+          ← Back to Events
+        </button>
+      </div>
+
+       <DisplayAPOD isFavPage = {true} showModal={showModal} handleInfoModal={handleInfoModal} containerRef={containerRef}/>
+    </>
+   
   )
 }
 

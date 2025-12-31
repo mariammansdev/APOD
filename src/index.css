@@ -7,7 +7,7 @@
 
 @layer components{
   .align-element{
-    @apply mx-auto max-w-6xl px-8;
+    @apply mx-auto max-w-6xl px-4;
   }
 }
 
@@ -47,5 +47,28 @@
     animation-delay: 120ms;
     transform-origin: center;
     will-change: transform, box-shadow;
+  }
+
+  @keyframes spaceParallax {
+    from {
+      opacity: 0;
+      transform: scale(0.1) translateY(60px);
+      filter: blur(6px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+      filter: blur(0);
+    }
+  }
+
+  .space-parallax {
+    animation: spaceParallax 3s cubic-bezier(.57,.42,.96,.16) both;
+    animation-delay: var(--delay, 0s);
+  }
+  .space-parallaxx {
+    animation: spaceParallax 3s cubic-bezier(.06,1.25,.95,1.44) both;
+    animation-delay: var(--delay, 0s);
+    
   }
 }

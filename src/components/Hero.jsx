@@ -17,9 +17,9 @@ const Hero = () => {
             </div>
         </div>
         
-        <div className="hidden md:block">
+        {/* <div className="hidden md:block">
             <RotatingHero />
-        </div>
+        </div> */}
 
 {/* for favorite section */}
         {/* <div className='hidden h-[28rem] lg:carousel carousel-center p-4 space-x-4 bg-neutral rounded-box'>

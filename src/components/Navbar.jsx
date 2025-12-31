@@ -5,6 +5,7 @@ import NavLinks from './NavLinks';
 import { useEffect, useState } from 'react';
 import { getAllEvents } from '../utils';
 import { useFavorites } from '../context/FavoritesContext';
+import ThemesChooser from './ThemesChooser';
 
 const themes = {
   fantasy: 'fantasy',
@@ -75,6 +76,8 @@ const Navbar = () => {
               <span className="badge badge-sm badge-primary indicator-item">{count}</span>
             </div>
           </NavLink>
+
+          {/* <ThemesChooser /> */}
         </div>
       </div>
     </nav>
