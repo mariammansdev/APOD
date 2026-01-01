@@ -63,7 +63,7 @@
   }
 
   .space-parallax {
-    animation: spaceParallax 3s cubic-bezier(.57,.42,.96,.16) both;
+    animation: spaceParallax 2s cubic-bezier(.57,.42,.96,.16) both;
     animation-delay: var(--delay, 0s);
   }
   .space-parallaxx {

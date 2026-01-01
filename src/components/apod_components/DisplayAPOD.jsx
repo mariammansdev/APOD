@@ -35,7 +35,10 @@ const DisplayAPOD = (props) => {
           }</div>
         )
           :
-          (<div className=" w-full flex justify-center">
+          (<div className=" w-full flex flex-col md:justify-center md:flex-row">
+              <div className="md:hidden w-24 flex flex-row pb-3">
+              <APODActions isFavPage={isFavPage} favorites={favorites} event={event} handleInfoModal={handleInfoModal} />
+            </div>
             {event['media_type'] === 'video' ? (
               <Theatre event={event} favorites={favorites} isFavPage={isFavPage} />
             ) : (
@@ -44,12 +47,14 @@ const DisplayAPOD = (props) => {
 
               </div>
             )}
-            {<div className="w-24 flex flex-col p-4">
+            
+              <div className="hidden md:w-24 md:flex md:flex-col md:p-4 ">
               <APODActions isFavPage={isFavPage} favorites={favorites} event={event} handleInfoModal={handleInfoModal} />
-            </div>}          </div>
+            </div>
+             </div>
           )
         }
-        {/* Side column for the info button - sits next to the media */}
+       
 
       </div>
     </div>
