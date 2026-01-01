@@ -6,6 +6,21 @@ export default {
       fontFamily: {
         space: ["Space Mono", "Space Mono Fallback", "monospace"],
         exo2: ["'Exo 2'", "system-ui", "sans-serif"],
+      },
+      keyframes: {
+        zoomIn: {
+          '0%': {
+            transform: 'scale(0.1)',
+            opacity: '0'
+          },
+          '100%': {
+            transform: 'scale(1)',
+            opacity: '1'
+          }
+        }
+      },
+      animation: {
+        'zoom-in': 'zoomIn 1s ease-out forwards'
       }
     }
   },

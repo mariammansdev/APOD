@@ -4,7 +4,7 @@ import { useFavorites } from '../../context/FavoritesContext';
 import Theatre from './Theatre';
 import APODImage from './APODImage';
 import APODActions from './APODActions';
-
+import RotatingHero from '../RotatingHero';
 
 const DisplayAPOD = (props) => {
 
@@ -14,6 +14,9 @@ const DisplayAPOD = (props) => {
   return (
 
     <div className='mx-auto flex  w-full h-[calc(100vh-14.5rem)]' >
+      <div className="absolute inset-0 -z-10 flex justify-center">
+        <RotatingHero size={560} hideSun={true} />
+      </div>
       <div className={"carousel w-full rounded-box "}>
         {isFavPage ? (
           <div className='carousel w-full rounded-box ' ref={containerRef} >{

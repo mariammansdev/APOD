@@ -17,10 +17,12 @@ export default function SmartImage({
   className,
   cover = true,       // object-fit cover by default (set to false to use contain)
   rounded = "rounded-lg",
-  onClick
+  onClick,
+  isFavPage = false   // true to show zoom-in animation instead of skeleton
 }) {
   const [loaded, setLoaded] = useState(false);
   const [errored, setErrored] = useState(false);
+  const [aspectRatio, setAspectRatio] = useState(4 / 3);
   //   const [ratio, setRatio] = useState(() => ratioCache.get(src) ?? null);
   const containerRef = useRef(null);
 
@@ -35,50 +37,43 @@ export default function SmartImage({
     setLoaded(false);
     setErrored(false);
 
-    // Preload & decode off-DOM for smooth reveal
+    // Create an offscreen image to preload and check loading
     const img = new Image();
-    // Note: Some browsers ignore .loading on Image(), but we still set it.
-    img.loading = eager ? "eager" : "lazy";
-    img.decoding = "async";
-
-    const onLoadLike = async () => {
-      try {
-        // Capture intrinsic size to learn aspect ratio
-        if (img.naturalWidth && img.naturalHeight) {
-          const r = img.naturalWidth / img.naturalHeight;
-          ratioCache.set(src, r);
-        }
-        // Wait for decode to avoid progressive paint
-        if (img.decode) {
-          await img.decode();
-        }
-      } catch {
-        // Some formats/browsers may throw; proceed anyway
-      }
+    img.onload = () => {
       if (!cancelled) setLoaded(true);
     };
-
-    const onError = () => {
+    img.onerror = () => {
       if (!cancelled) setErrored(true);
     };
-
-    // Attach handlers before assigning `src` to avoid missing
-    img.onload = onLoadLike;
-    img.onerror = onError;
     img.src = src;
 
     return () => {
       cancelled = true;
     };
-  }, [src, eager]);
+  }, [src]);
+
+  // Responsive aspect ratio based on screen size
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setAspectRatio(2 / 3);
+      } else {
+        setAspectRatio(4 / 3);
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   return (
     <div
       ref={containerRef}
       className={className ? className : clsx("relative w-full overflow-hidden bg-base-200", rounded)}
-      style={{ aspectRatio: 4 / 3 }}
+      style={{ aspectRatio }}
     >
       {/* Placeholder layer (blur LQIP or skeleton) */}
-      {!loaded && !errored && (
+      {!loaded && !errored && !isFavPage &&(
         lqip ? (
           <img
             src={lqip}
@@ -87,15 +82,16 @@ export default function SmartImage({
             loading="lazy"
             decoding="async"
             className={className ? className : clsx(
-              "absolute inset-0 w-full h-full",
+              "absolute  h-full",
               cover ? "object-cover" : "object-contain",
               "filter blur-md scale-105"
 
             )}
             onClick={onClick}
           />
-        ) : (
-          <div className="absolute inset-0 w-full h-full bg-gray-300 animate-pulse" />
+        ) 
+        : (
+          <div className="absolute inset-0  h-full bg-gray-300 animate-pulse" />
         )
       )}
 
@@ -109,9 +105,16 @@ export default function SmartImage({
           fetchpriority={eager ? "high" : "low"}
           onClick={onClick}
           className={clsx(
-            "absolute inset-0 w-full h-full transition-opacity duration-300",
+            "absolute inset-0 w-full h-full",
             cover ? "object-cover" : "object-contain",
-            loaded ? "opacity-100" : "opacity-0",
+            isFavPage ? (
+              loaded ? "animate-zoom-in" : "opacity-0 scale-10"
+            ) : (
+              clsx(
+                "transition-opacity duration-300",
+                loaded ? "opacity-100" : "opacity-0"
+              )
+            ),
             className
           )}
         />
