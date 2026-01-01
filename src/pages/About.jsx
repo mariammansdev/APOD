@@ -30,7 +30,7 @@ const About = () => {
           </div>
         </div>
       </div> */}
-      <p className="text-2xl  leading-relaxed mt-9 font-exo2 mb-16">
+      <p className="md:text-2xl  leading-relaxed mt-9 font-exo2 mb-16">
         <span className="space-parallax inline-block">
           Welcome to your <span className="font-semibold text-secondary">daily cosmic scroll</span>—where space feels less like a science textbook and more like pure wonder.
         </span>
@@ -45,10 +45,10 @@ const About = () => {
         <span className="space-parallax inline-block" >
           Because loving the universe shouldn't require a degree—it should just feel awesome.
         </span>
-        <div className="flex space-parallaxx" style={{ '--delay': '3.6s' }}>
-          <strong className="block mt-6 text-secondary ">One picture. One story. Every day. Ready to explore?</strong>
-          <div className='mt-3 mx-2 cursor-pointer  transition-transform duration-300 ease-out hover:-translate-y-1 hover:-rotate-6
-            '>
+        <div className="flex " >
+          <strong className="block mt-6 text-secondary space-parallax ">One picture. One story. Every day. Ready to explore?</strong>
+          <div className='mt-3 mx-2 cursor-pointer space-parallaxx transition-transform duration-300 ease-out hover:-translate-y-1 hover:-rotate-6
+            '  style={{ '--delay': '2.6s' }}>
             <Link to='/events' ><BsRocketTakeoff size={50} /></Link>
           </div>
         </div>

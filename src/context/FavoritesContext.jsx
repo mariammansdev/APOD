@@ -31,15 +31,15 @@ function writeLS(array) {
 export function FavoritesProvider({ children }) {
   // Each item is a full record: { date, title, ... }
   const [favorites, setFavorites] = useState(() => readLS());
-    const [showModal, setShowModal] = useState(false);
-    const [isOpen, setIsOpen] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [currentFavEvent, setCurrentFavEvent] = useState();
 
-    const handleInfoModal = useCallback( () =>{
-        debugger
-        setShowModal(!showModal);
-        setIsOpen(!isOpen)
-    },[])
- 
+  const handleInfoModal = useCallback(() => {
+    setShowModal(prev => !prev);
+    setIsOpen(prev => !prev)
+  }, [])
+
 
   // Persist on change
   useEffect(() => {
@@ -48,7 +48,7 @@ export function FavoritesProvider({ children }) {
 
 
   // Helpers
-  debugger
+
   const isFavorite = useCallback(
     (date) => favorites.some((f) => f.date === date),
     [favorites]
@@ -88,6 +88,15 @@ export function FavoritesProvider({ children }) {
     []
   );
 
+  //update the current favorite event
+
+  const updateCurrentFavourite = useCallback(
+    (item) => {
+      setCurrentFavEvent(item);
+    },
+    []
+  );
+
   const value = useMemo(
     () => ({
       favorites,
@@ -97,10 +106,12 @@ export function FavoritesProvider({ children }) {
       removeFavorite,
       toggleFavorite,
       handleInfoModal,
+      updateCurrentFavourite,
+      currentFavEvent,
       isOpen,
       showModal
     }),
-    [favorites, isFavorite, /*upsertFavorite,*/ removeFavorite, toggleFavorite, handleInfoModal, isOpen, showModal]
+    [favorites, isFavorite, /*upsertFavorite,*/ removeFavorite, toggleFavorite, handleInfoModal, isOpen, showModal, updateCurrentFavourite, currentFavEvent]
   );
 
   return (

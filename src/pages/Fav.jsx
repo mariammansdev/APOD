@@ -1,19 +1,21 @@
 import { useNavigation, useLocation, useNavigate } from "react-router-dom";
 import LoadingState from "./LoadingState";
 import { DisplayAPOD } from "../components";
-import {useFavorites} from '../context/FavoritesContext'
+import { useFavorites } from '../context/FavoritesContext'
 import { useRef, useEffect } from "react";
+import SideBar from "../components/apod_components/SideBar";
+
 const Fav = () => {
   const navigation = useNavigation();
   const navigate = useNavigate();
   const location = useLocation();
-  const {showModal, handleInfoModal} = useFavorites();
+  const { showModal, handleInfoModal, currentFavEvent, isOpen } = useFavorites();
   const handleBack = () => {
-      const fallback = location.state?.listUrl ?? "/events";
-      navigate(fallback, { replace: false });
+    const fallback = location.state?.listUrl ?? "/events";
+    navigate(fallback, { replace: false });
   };
 
-const containerRef = useRef(null);
+  const containerRef = useRef(null);
 
   useEffect(() => {
     const root = containerRef.current;
@@ -30,6 +32,7 @@ const containerRef = useRef(null);
 
       // Remove hash from URL to keep history clean
       history.replaceState(null, "", location.pathname + location.search);
+
     };
 
     root.addEventListener("click", onClick);
@@ -59,7 +62,7 @@ const containerRef = useRef(null);
     // }</div>
     <>
 
-    <div className='text-md breadcrumbs'>
+      <div className='text-md breadcrumbs'>
         <button
           onClick={handleBack}
           className="btn btn-ghost"
@@ -68,10 +71,13 @@ const containerRef = useRef(null);
           ← Back to Events
         </button>
       </div>
+      <section className="w-full h-[full] overflow-hidden"  /*data-aos="fade-down"*/>
+        <DisplayAPOD isFavPage={true} showModal={showModal} handleInfoModal={handleInfoModal} containerRef={containerRef} />
+        {showModal && <SideBar showModal={showModal} handleInfoModal={handleInfoModal} data={currentFavEvent} isOpen={isOpen} />}
+      </section>
 
-       <DisplayAPOD isFavPage = {true} showModal={showModal} handleInfoModal={handleInfoModal} containerRef={containerRef}/>
     </>
-   
+
   )
 }
 

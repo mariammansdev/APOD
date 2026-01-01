@@ -17,17 +17,18 @@ export default function SmartImage({
   className,
   cover = true,       // object-fit cover by default (set to false to use contain)
   rounded = "rounded-lg",
+  onClick
 }) {
   const [loaded, setLoaded] = useState(false);
   const [errored, setErrored] = useState(false);
-//   const [ratio, setRatio] = useState(() => ratioCache.get(src) ?? null);
+  //   const [ratio, setRatio] = useState(() => ratioCache.get(src) ?? null);
   const containerRef = useRef(null);
 
-//   const styleAspect = useMemo(() => {
-//     // If we know the ratio, use it; else a reasonable default (4/3)
-//     const r = ratio ?? 4 / 3;
-//     return { aspectRatio: `${r}` };
-//   }, [ratio]);
+  //   const styleAspect = useMemo(() => {
+  //     // If we know the ratio, use it; else a reasonable default (4/3)
+  //     const r = ratio ?? 4 / 3;
+  //     return { aspectRatio: `${r}` };
+  //   }, [ratio]);
 
   useEffect(() => {
     let cancelled = false;
@@ -39,16 +40,13 @@ export default function SmartImage({
     // Note: Some browsers ignore .loading on Image(), but we still set it.
     img.loading = eager ? "eager" : "lazy";
     img.decoding = "async";
-    img.src = src;
 
     const onLoadLike = async () => {
-      debugger
       try {
         // Capture intrinsic size to learn aspect ratio
         if (img.naturalWidth && img.naturalHeight) {
           const r = img.naturalWidth / img.naturalHeight;
           ratioCache.set(src, r);
-          if (!cancelled) setRatio(r);
         }
         // Wait for decode to avoid progressive paint
         if (img.decode) {
@@ -56,28 +54,28 @@ export default function SmartImage({
         }
       } catch {
         // Some formats/browsers may throw; proceed anyway
-      } finally {
-        if (!cancelled) setLoaded(true);
       }
+      if (!cancelled) setLoaded(true);
     };
 
     const onError = () => {
       if (!cancelled) setErrored(true);
     };
 
+    // Attach handlers before assigning `src` to avoid missing
     img.onload = onLoadLike;
     img.onerror = onError;
+    img.src = src;
 
     return () => {
       cancelled = true;
     };
   }, [src, eager]);
-
   return (
     <div
       ref={containerRef}
-      className={clsx("relative w-full overflow-hidden bg-base-200", rounded)}
-      style={{aspectRatio: 4/3}}
+      className={className ? className : clsx("relative w-full overflow-hidden bg-base-200", rounded)}
+      style={{ aspectRatio: 4 / 3 }}
     >
       {/* Placeholder layer (blur LQIP or skeleton) */}
       {!loaded && !errored && (
@@ -86,16 +84,18 @@ export default function SmartImage({
             src={lqip}
             alt=""
             aria-hidden
-            loading="lazing"
-            decode="async"
-            className={clsx(
+            loading="lazy"
+            decoding="async"
+            className={className ? className : clsx(
               "absolute inset-0 w-full h-full",
               cover ? "object-cover" : "object-contain",
               "filter blur-md scale-105"
+
             )}
+            onClick={onClick}
           />
         ) : (
-          <div className="absolute inset-0 skeleton" />
+          <div className="absolute inset-0 w-full h-full bg-gray-300 animate-pulse" />
         )
       )}
 
@@ -107,6 +107,7 @@ export default function SmartImage({
           loading={eager ? "eager" : "lazy"}
           decoding="async"
           fetchpriority={eager ? "high" : "low"}
+          onClick={onClick}
           className={clsx(
             "absolute inset-0 w-full h-full transition-opacity duration-300",
             cover ? "object-cover" : "object-contain",

@@ -31,7 +31,7 @@ const EventsGrid = () => {
 
 
   return (
-    <div className='pt-12 mb-14 grid gap-4 md:grid-cols-2 lg:grid-cols-3'>
+    <div className='pt-12 mb-14 px-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3'>
       {events.map((apodEvent) => {
         const { title, date, hdurl, thumbnail_url, url, copyright } = apodEvent;
         const videoId = thumbnail_url ? '' : getYouTubeId(url);
@@ -54,7 +54,6 @@ const EventsGrid = () => {
                 <BsHeartFill className="h-10 w-10 badge badge-sm hover:badge-md hover:h-12 hover:w-12 badge-secondary indicator-item transition duration-300"
                   color={checkIsFavEvent(apodEvent.date) ? '#EA4335' : 'white'}
                   onClick={(e) => {
-                    debugger
                     e.preventDefault();
                     e.stopPropagation();
                     toggleFavorite(apodEvent);

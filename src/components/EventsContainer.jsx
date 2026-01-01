@@ -27,7 +27,7 @@ const EventsContainer = () => {
         <h4 className='font-medium text-md'>
           {totalEvents} event{totalEvents > 1 && 's'}
         </h4>
-        <div className='flex gap-x-2'>
+        <div className='hidden md:flex md:gap-x-2'>
           <button
             type='button'
             onClick={() => setLayout('grid')}
