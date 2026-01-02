@@ -30,7 +30,7 @@ const About = () => {
           </div>
         </div>
       </div> */}
-      <p className="md:text-2xl  leading-relaxed mt-9 font-exo2 mb-16">
+      <p className="md:text-2xl  leading-relaxed mt-9 font-exo2 mb-16 p-4">
         <span className="space-parallax inline-block">
           Welcome to your <span className="font-semibold text-secondary">daily cosmic scroll</span>—where space feels less like a science textbook and more like pure wonder.
         </span>
