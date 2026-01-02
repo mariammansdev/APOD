@@ -23,7 +23,7 @@ const DisplayAPOD = (props) => {
             favorites.map((event, idx) => {
               return (
                 <div key={idx} className="carousel-item w-full flex flex-col md:justify-center md:flex-row ">
-                  <div className="md:hidden w-24 flex flex-row pb-3 ">
+                  <div className="md:hidden w-full flex flex-row pb-3 justify-end ">
                     <APODActions isFavPage={isFavPage} favorites={favorites} event={event} handleInfoModal={handleInfoModal} />
                   </div>
                   {event['media_type'] === 'video' ? (
