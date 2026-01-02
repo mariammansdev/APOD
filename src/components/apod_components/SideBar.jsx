@@ -18,7 +18,7 @@ export default function SideBar(props) {
                     {data?.title}
                 </h2>
                 <div className="flex flex-col gap-2">
-                    <p className="text-[1.1rem] font-light opacity-70">{data?.date}</p>
+                    <p className="text-[1.1rem] font-pastel opacity-70">{data?.date}</p>
                     <p>{data?.explanation}</p>
                 </div>
                 <button onClick={handleInfoModal}>

@@ -11,6 +11,10 @@ import React, {
 
 const FavoritesContext = createContext(null);
 const LS_KEY = "favoriteEvents"; // store full objects
+const themes = {
+  fantasy: 'fantasy',
+  night: 'night'
+};
 
 // Read favorites from localStorage (array of objects)
 function readLS() {
@@ -28,12 +32,18 @@ function writeLS(array) {
   localStorage.setItem(LS_KEY, JSON.stringify(array));
 }
 
+const getThemeFromLocalStorage = () => {
+  return localStorage.getItem('theme') || themes.fantasy;
+};
+
+
 export function FavoritesProvider({ children }) {
   // Each item is a full record: { date, title, ... }
   const [favorites, setFavorites] = useState(() => readLS());
   const [showModal, setShowModal] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [currentFavEvent, setCurrentFavEvent] = useState();
+  const [theme, setTheme] = useState(()=>getThemeFromLocalStorage());
 
   const handleInfoModal = useCallback(() => {
     setShowModal(prev => !prev);
@@ -109,9 +119,12 @@ export function FavoritesProvider({ children }) {
       updateCurrentFavourite,
       currentFavEvent,
       isOpen,
-      showModal
+      showModal,
+      themes,
+      theme,
+      setTheme
     }),
-    [favorites, isFavorite, /*upsertFavorite,*/ removeFavorite, toggleFavorite, handleInfoModal, isOpen, showModal, updateCurrentFavourite, currentFavEvent]
+    [favorites, isFavorite, /*upsertFavorite,*/ removeFavorite, toggleFavorite, handleInfoModal, isOpen, showModal, updateCurrentFavourite, currentFavEvent, theme, setTheme]
   );
 
   return (

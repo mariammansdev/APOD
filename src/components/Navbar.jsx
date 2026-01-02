@@ -7,21 +7,13 @@ import { getAllEvents } from '../utils';
 import { useFavorites } from '../context/FavoritesContext';
 import ThemesChooser from './ThemesChooser';
 
-const themes = {
-  fantasy: 'fantasy',
-  dark: 'dark'
-};
-
-const getThemeFromLocalStorage = () => {
-  return localStorage.getItem('theme') || themes.fantasy;
-};
 
 const Navbar = () => {
-  const [theme, setTheme] = useState(getThemeFromLocalStorage());
-  const {count} = useFavorites()
+
+  const {count, themes, theme, setTheme} = useFavorites()
   const handleTheme = () => {
-    const { fantasy, dark } = themes;
-    const newTheme = theme === fantasy ? dark : fantasy;
+    const { fantasy, night } = themes;
+    const newTheme = theme === fantasy ? night : fantasy;
     setTheme(newTheme);
   };
 
@@ -63,7 +55,7 @@ const Navbar = () => {
             onClick={handleTheme}
             className="btn btn-ghost btn-circle transition-transform"
           >
-            {theme === themes.dark ? (
+            {theme === themes.night ? (
               <BsSunFill className="h-5 w-5 text-warning" />
             ) : (
               <BsMoonFill className="h-5 w-5 text-primary" />

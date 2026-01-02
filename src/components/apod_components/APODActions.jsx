@@ -27,7 +27,7 @@ const APODActions = (props) => {
         <BsInfoCircleFill className='h-10 w-10' />
         {/* <i className="fa-solid fa-circle-info text-2xl"></i>       */}
       </button>}
-      {!isFavPage && <button
+      {<button
         onClick={() => toggleFavorite(event)}
         className={`btn btn-ghost cursor-pointer p-3 rounded-full w-14 h-14 text-2xl shadow-lg ${animateBtn ? 'animate-popshake' : ''}`}
       >

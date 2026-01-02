@@ -10,9 +10,9 @@ import React from "react";
  *
  * Props:
  * - size: overall SVG size in pixels (default 720)
- * - dark: set true to use a darker background (pairs nicely with DaisyUI dark themes)
+ * - night: set true to use a darker background (pairs nicely with DaisyUI night themes)
  */
-export default function RotatingHero({ size = 720, dark = true, hideSun = false }) {
+export default function RotatingHero({ size = 720, night = true, hideSun = false }) {
   const cx = size / 2;
   const cy = size / 2;
 
@@ -103,7 +103,7 @@ export default function RotatingHero({ size = 720, dark = true, hideSun = false 
               cy={cy}
               r={p.radius}
               fill="none"
-              stroke={dark ? "rgba(255,255,255,0.15)" : "rgba(0,0,0,0.15)"}
+              stroke={night ? "rgba(255,255,255,0.15)" : "rgba(0,0,0,0.15)"}
               strokeDasharray="3 6"
             />
           ))}
@@ -174,7 +174,7 @@ export default function RotatingHero({ size = 720, dark = true, hideSun = false 
                       cy="0"
                       r={p.r + 14}
                       fill="none"
-                      stroke={dark ? "rgba(255,255,255,0.18)" : "rgba(0,0,0,0.18)"}
+                      stroke={night ? "rgba(255,255,255,0.18)" : "rgba(0,0,0,0.18)"}
                       strokeDasharray="2 5"
                     />
                     {/* Moon group rotates around planet center (0,0) */}

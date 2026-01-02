@@ -1,7 +1,8 @@
 import { Link, useLoaderData } from 'react-router-dom';
 import { formatPrice } from '../utils';
-
-import { useEffect } from 'react';
+import { useFavorites } from '../context/FavoritesContext';
+import { useCallback } from 'react';
+import { BsHeartFill } from 'react-icons/bs';
 
 const EventsList = () => {
     let { events } = useLoaderData();
@@ -16,6 +17,13 @@ const EventsList = () => {
         const match = url.match(regExp);
         return match ? match[1] : null;
     }
+    const { isFavorite, toggleFavorite, theme, themes } = useFavorites();
+    const checkIsFavEvent = (date) => {
+        return isFavorite(date);
+    }
+    const isLightTheme = useCallback(() => {
+        return Object.keys(themes).find(key => themes[key] === theme) != "night";
+    }, [theme]);
 
     return (
         <div className='pt-12 grid gap-4'>
@@ -32,12 +40,21 @@ const EventsList = () => {
                             listUrl: `/events${location.search}`,
                         }}
 
-                        className='p-8 flex flex-col sm:flex-row rounded-lg shadow-xl hover:shadow-2xl duration-300 group'
+                        className='p-8 mb-8 flex flex-col sm:flex-row rounded-lg shadow-xl hover:shadow-2xl duration-300 group indicator w-full '
                         data-aos="fade-up"
                     >
+                        <button>
+                            <BsHeartFill className={`h-10 w-10 badge badge-sm hover:badge-md hover:h-12 hover:w-12 ${isLightTheme() ? "badge-primary" : "badge-primary"}  indicator-item transition duration-300`}
+                                color={checkIsFavEvent(event.date) ? '#EA4335' : 'white'}
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    toggleFavorite(event);
+                                }} />
+                        </button>
                         <img
                             src={hdurl || thumbnail_url || thumbnailUrl} alt={title || 'bg-img'}
-                            className='h-24 w-24 rounded-lg h-64 md:h-48 sm:h-32 sm:w-32 object-cover group-hover:scale-105 transition duration-300'
+                            className='h-24 w-24 rounded-lg md:h-48 sm:h-32 sm:w-32 object-cover group-hover:scale-105 transition duration-300'
                         />
                         <div className='ml-0 sm:ml-16'>
                             <h3 className='capitalize font-medium text-lg'>{title}</h3>

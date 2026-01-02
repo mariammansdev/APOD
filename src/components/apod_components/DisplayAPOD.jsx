@@ -22,13 +22,18 @@ const DisplayAPOD = (props) => {
           <div className='carousel w-full rounded-box ' ref={containerRef} >{
             favorites.map((event, idx) => {
               return (
-                <div key={idx} className="carousel-item w-full ">
+                <div key={idx} className="carousel-item w-full flex flex-col md:justify-center md:flex-row ">
+                  <div className="md:hidden w-24 flex flex-row pb-3 ">
+                    <APODActions isFavPage={isFavPage} favorites={favorites} event={event} handleInfoModal={handleInfoModal} />
+                  </div>
                   {event['media_type'] === 'video' ? (
                     <Theatre event={event} idx={idx} favorites={favorites} isFavPage={isFavPage} />
                   ) : (
                     <APODImage event={event} idx={idx} favorites={favorites} isFavPage={isFavPage} />
                   )}
+                <div className="hidden md:w-24 md:flex md:flex-col md:p-4 ">
                   <APODActions isFavPage={isFavPage} favorites={favorites} event={event} handleInfoModal={handleInfoModal} />
+                </div>
                 </div>
               )
             })
@@ -36,7 +41,7 @@ const DisplayAPOD = (props) => {
         )
           :
           (<div className=" w-full flex flex-col md:justify-center md:flex-row">
-              <div className="md:hidden w-24 flex flex-row pb-3">
+            <div className="md:hidden w-full flex flex-row pb-3 justify-end">
               <APODActions isFavPage={isFavPage} favorites={favorites} event={event} handleInfoModal={handleInfoModal} />
             </div>
             {event['media_type'] === 'video' ? (
@@ -48,7 +53,7 @@ const DisplayAPOD = (props) => {
               </div>
             )}
             
-              <div className="hidden md:w-24 md:flex md:flex-col md:p-4 ">
+            <div className="hidden md:w-24 md:flex md:flex-col md:p-4 ">
               <APODActions isFavPage={isFavPage} favorites={favorites} event={event} handleInfoModal={handleInfoModal} />
             </div>
              </div>
