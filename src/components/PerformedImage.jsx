@@ -1,5 +1,5 @@
 
-// src/components/SmartImage.jsx
+// src/components/PerformedImage.jsx
 import { useEffect, useMemo, useRef, useState } from "react";
 import clsx from "clsx";
 
@@ -9,7 +9,7 @@ import clsx from "clsx";
  */
 const ratioCache = new Map();
 
-export default function SmartImage({
+export default function PerformedImage({
   src,
   alt,
   lqip,              // optional tiny blurred placeholder (data URL or tiny image URL)

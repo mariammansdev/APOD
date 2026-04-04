@@ -4,9 +4,12 @@ import hero1 from '../assets/hero1.webp'
 import hero2 from '../assets/hero2.webp'
 import hero3 from '../assets/hero3.webp'
 import hero4 from '../assets/hero4.webp'
+import { useMediaQuery } from "react-responsive";
 
 const carouselImages = [hero1, hero2, hero3, hero4]
 const Hero = () => {
+    const isMobile = useMediaQuery({ maxWidth: 767 });
+
   return (
     <div className='grid lg:grid-cols-2 gap-24 items-center'>
         <div>
@@ -17,9 +20,9 @@ const Hero = () => {
             </div>
         </div>
         
-        {/* <div className="hidden md:block">
+       { !isMobile && <div className="hidden md:block">
             <RotatingHero />
-        </div> */}
+        </div>}
 
 {/* for favorite section */}
         {/* <div className='hidden h-[28rem] lg:carousel carousel-center p-4 space-x-4 bg-neutral rounded-box'>

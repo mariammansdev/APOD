@@ -9,7 +9,7 @@ const singleEventQuery = (date) => {
   return {
     queryKey: ['single-event', date],
     queryFn: async () => {
-      const res = await customFetch(`&date=${date}`);
+      const res = await customFetch('', { params: { date } });
       return res.data;
     },
   }

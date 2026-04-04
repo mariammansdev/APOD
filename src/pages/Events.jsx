@@ -3,21 +3,20 @@ import { customFetch } from "../utils"
 import { useNavigation } from "react-router-dom";
 import LoadingState from "./LoadingState";
 
-const url = '/events';
+const url = '';
 
 const fetchEvents = (queryParams) => {
-  const { date } =
-    queryParams;
   return {
     queryKey: [
       'events',
-      date ?? new Date()
+      queryParams
     ],
     queryFn: () => customFetch(url, { params: queryParams })
   }
 }
 
 export const loader = (queryClient) => async ({ request }) => {
+  debugger
   const params = Object.fromEntries([...new URL(request.url).searchParams.entries()]);
   const res = await queryClient.ensureQueryData(fetchEvents(params));
   const events = res.data;
