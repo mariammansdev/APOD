@@ -1,4 +1,4 @@
-# Project Name
+# APOD
 
 This project is **APOD**, which provides APOD (Astronomy Picture of the Day) features powered by NASA's API. The APOD API offers a new image or video every day, along with a brief explanation of what is being shown.
 
